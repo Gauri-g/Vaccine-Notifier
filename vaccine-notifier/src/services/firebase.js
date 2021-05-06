@@ -2,8 +2,8 @@ import dotenv from "dotenv";
 import firebase from "firebase/app"; 
 import cookie,{removeCookie} from "react-cookies"; 
 import 'firebase/firestore';
-
 require("firebase/auth");
+
 dotenv.config();
 
 firebase.initializeApp({
@@ -33,6 +33,7 @@ export const signInWithGoogle = () => {
         name: JSON.stringify(res.user.displayName),
         email: JSON.stringify(res.user.email),
     })
+    cookie.save("firebaseUid",res.user.uid,{path: "/"})
     window.location.href="/dashboard";
     console.log(res);
     // console.log(res.user_id)
@@ -52,16 +53,8 @@ export const signInWithGoogle = () => {
 
 
 export const logOut = () => {
-  auth
-    .signOut()
-    .then(() => {
-      console.log("logged out");
-      // removeCookie("key",{path: "/"})
-      // window.location.href="/";
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
+  cookie.remove("key");
+  window.location.reload(); 
 };
 
 

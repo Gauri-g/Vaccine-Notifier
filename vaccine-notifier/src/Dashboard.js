@@ -4,11 +4,16 @@ import { useEffect, useContext, useState } from "react";
 import { UserContext } from "./providers/UserProvider";
 import { Redirect } from "react-router-dom";
 import { logOut } from "./services/firebase";
+import firebase from "firebase/app"; 
+import cookie,{removeCookie} from "react-cookies"; 
+import 'firebase/firestore';
+require("firebase/auth");
+
 export default function Dashboard() {
   const user = useContext(UserContext);
-  const [redirect, setredirect] = useState(null);
+  const [redirect, setredirect] = useState(null); 
 
-
+  
   return (
     <div className="dashboard">
       <h1 className="dashboard-text">Welcome Home</h1>
