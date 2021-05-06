@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import firebase from "firebase/app"; 
 import cookie,{removeCookie} from "react-cookies"; 
+import 'firebase/firestore';
 
 require("firebase/auth");
 dotenv.config();
@@ -26,9 +27,23 @@ export const signInWithGoogle = () => {
   auth
     .signInWithPopup(googleProvider)
     .then((res) => {
-      console.log(res);
       cookie.save("key",res.credential.idToken,{path: "/"})
-      window.location.href="/dashboard";
+      const db = firebase.firestore();
+      db.collection("users").doc(res.user.uid).set({
+        name: JSON.stringify(res.user.displayName),
+        email: JSON.stringify(res.user.email),
+    })
+    window.location.href="/dashboard";
+    console.log(res);
+    // console.log(res.user_id)
+    // console.log(res.user.displayName)
+    // console.log(res.user.email)
+    // .then(() => {
+    //     console.log("Document successfully written!");
+    // })
+    // .catch((error) => {
+    //     console.error("Error writing document: ", error);
+    // });
     })
     .catch((error) => {
       console.log(error.message);
@@ -41,8 +56,8 @@ export const logOut = () => {
     .signOut()
     .then(() => {
       console.log("logged out");
-      removeCookie("key",{path: "/"})
-      window.location.href="/";
+      // removeCookie("key",{path: "/"})
+      // window.location.href="/";
     })
     .catch((error) => {
       console.log(error.message);
