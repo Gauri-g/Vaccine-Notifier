@@ -8,14 +8,7 @@ export default function Dashboard() {
   const user = useContext(UserContext);
   const [redirect, setredirect] = useState(null);
 
-  useEffect(() => {
-    if (!user) {
-      setredirect("/");
-    }
-  }, [user]);
-  if (redirect) {
-    <Redirect to={redirect} />;
-  }
+
   return (
     <div className="dashboard">
       <h1 className="dashboard-text">Welcome Home</h1>

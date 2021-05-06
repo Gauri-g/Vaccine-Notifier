@@ -11,9 +11,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/" component={Login} exact />
-          <ProtectedRoute path="/dashboard"component={Dashboard}>
-            <Dashboard />
-          </ProtectedRoute>
+          <ProtectedRoute path="/dashboard" redirect="/" component={Dashboard} /> 
         </Switch>
       </div>
     </Router>

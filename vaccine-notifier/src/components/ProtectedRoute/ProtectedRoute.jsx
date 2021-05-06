@@ -4,7 +4,6 @@ import cookie from "react-cookies";
 
 const ProtectedRoute = ({ component: Component, redirect, ...rest }) => {
     const key = cookie.load("key");
-
     return (
         <Route
             {...rest}
