@@ -26,35 +26,36 @@ const Autocomplete =({options}) =>
 
   function onChange (e)  {
     console.log('onChanges');
-
+    console.log(e.target.value);
     // const { options } = props;
     setuserInput(e.target.value);
-    setfilteredOptions (options.filter(
-      (optionName) =>
-        optionName.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-    ));
-      setactiveOption(0);
-      setshowOptions(true);
-      setuserInput(e.target.value);
+      // setactiveOption(0);
+      // setshowOptions(true);
   };
 
   useEffect(() => { 
-      setactiveOption(0);
-      setshowOptions(false);
-      setfilteredOptions([]);
-      setuserInput(activeOption.innerText)  
-    cookie.save("firebasecity", activeOption.innerText, { path: "/" });
+    setfilteredOptions (options.filter(
+      (optionName) =>
+        {console.log(optionName.indexOf(userInput))
+          return optionName.toLowerCase().indexOf(userInput.toLowerCase()) > -1}
+    )
+  )
+      // setactiveOption(0);
+      setshowOptions(true);
+      // setfilteredOptions([]);
+      // setuserInput(activeOption.innerText)  
+    // cookie.save("firebasecity", activeOption.innerText, { path: "/" });
   },[userInput]);
 
-  // onClick = (e) => {
+  function onSelect(e) {
      
-  //   setactiveOption(0),
-  //     setshowOptions(false),
-  //     setfilteredOptions([])
-  //     setuserInput(e.currentTarget.innerText)  
-  
-  //   cookie.save("firebasecity", e.currentTarget.innerText, { path: "/" });
-  // };
+    setactiveOption(0);
+      setshowOptions(false);
+      setfilteredOptions([]);
+      setuserInput(e.currentTarget.innerText)  
+    cookie.save("firebasecity", e.currentTarget.innerText, { path: "/" });
+  };
+
   function onKeyDown (e) {
     // const { activeOption, filteredOptions } = this.state;
     if (e.keyCode === 13) {
@@ -87,14 +88,14 @@ const Autocomplete =({options}) =>
     if (showOptions && userInput) {
       if (filteredOptions.length) {
         optionList = (
-          <ul className="options">
+          <ul className="options" >
             {filteredOptions.map((optionName, index) => {
               let className;
               if (index === activeOption) {
                 className = 'option-active';
               }
               return (
-                <li className={className} key={optionName} >
+                <li className={className} key={optionName} onClick={onSelect} >
                   {optionName}
                 </li>
               );
