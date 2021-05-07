@@ -1,31 +1,35 @@
 import React from "react";
 import "./Dashboard.css";
-import { useEffect, useContext, useState,useRef } from "react";
+import { useEffect, useContext, useState, useRef } from "react";
 import { UserContext } from "./providers/UserProvider";
 import { Redirect } from "react-router-dom";
 import { logOut } from "./services/firebase";
 import firebase from "firebase/app";
 import cookie, { removeCookie } from "react-cookies";
 import "firebase/firestore";
+import Autocomplete from "./components/AutoComplete/Autocomplete";
 require("firebase/auth");
 
 export default function Dashboard() {
   const cityRef = useRef("");
   const [selectedOption, setselectedOption] = useState("");
-   
+  
 
-   function onValueChange(event){
-     setselectedOption(event.target.value);
+  function onValueChange(event) {
+    setselectedOption(event.target.value);
   }
 
   function submitHandler(event) {
     event.preventDefault();
     const uid = cookie.load("firebaseUid");
+    const firecity = cookie.load("firebasecity");
     const db = firebase.firestore();
- 
-    db.collection("users").doc(uid).update({
-      city: cityRef.current.value,
-      age: selectedOption,
+
+    db.collection("users")
+      .doc(uid)
+      .update({
+        city: firecity,
+        age: selectedOption,
       })
       .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
@@ -40,35 +44,43 @@ export default function Dashboard() {
       <div>
         <form onSubmit={submitHandler}>
           <div>
-          <div className="radio">
-          <label>
-            <input
-              type="radio"
-              value="Below45"
-              checked={ selectedOption === "Below45"}
-              onChange={onValueChange}
-            />
-            Below 45
-          </label>
-        </div>
-        <div className="radio">
-          <label>
-            <input
-              type="radio"
-              value="Above45"
-              checked={ selectedOption === "Above45"}
-              onChange={onValueChange}
-            />
-            Above 45
-          </label>
-        </div>
-            <input
-              type="text"
-              id="city"
-              ref={cityRef}
-              placeholder="City"
-            />
+            <div className="radio">
+              <label>
+                <input
+                  type="radio"
+                  value="Below45"
+                  checked={selectedOption === "Below45"}
+                  onChange={onValueChange}
+                />
+                Below 45
+              </label>
+            </div>
+            <div className="radio">
+              <label>
+                <input
+                  type="radio"
+                  value="Above45"
+                  checked={selectedOption === "Above45"}
+                  onChange={onValueChange}
+                />
+                Above 45
+              </label>
+            </div>
+            {/* <input type="text" id="city" ref={cityRef} placeholder="City" /> */}
           </div>
+          <div> 
+          </div>
+          <Autocomplete
+        options={[
+          "Dehradun",
+          "Kolkata",
+          "Delhi",
+          "Mumbai",
+          "Banglore",
+          "Vellore",
+          "Agra"
+        ]}
+      />
           <button> Submit </button>
         </form>
       </div>
