@@ -15,6 +15,22 @@ import Form from "./components/Register/Form";
 require("firebase/auth");
 
 export default function Dashboard() {
+  const [district,setDistrict] = useState("");
+  const [age,setAge ] = useState("");
+  useEffect(
+   () =>{
+    const uid = cookie.load("firebaseUid");
+    const headers = { "Authorization": uid };
+    fetch("http://34.93.10.131/get", { headers }).then((response) =>{
+      const data = response.json();
+      return data;
+    })
+    .then((data)=>{console.log(data,"hereeee");
+    setDistrict(data.data.district);
+    setAge(data.data.age); 
+  })
+   
+    },[]);
 
   return (
     <>
@@ -22,7 +38,7 @@ export default function Dashboard() {
     <div className="container col-lg-6 col-xs-12 col-md-6 ">
       <div className="name"><h3>Some Placeholder Title</h3></div>
       <div className="text">
-        <Form />
+        <Form district={district} age={age}/>
       </div>
       <div><How /></div>
       <div className="bug">

@@ -25,33 +25,53 @@ const googleProvider = new firebase.auth.GoogleAuthProvider();
 export const signInWithGoogle = () => {
   auth
     .signInWithPopup(googleProvider)
-
-    .then((res) => {
-      cookie.save("key", res.credential.idToken, { path: "/" });
-      const db = firebase.firestore();
-      db.collection("users")
-        .doc(res.user.uid)
-        .set({
-          name: JSON.stringify(res.user.displayName),
-          email: JSON.stringify(res.user.email),
+    
+    .then((res) => { 
+      cookie.save("key", res.credential.idToken, { path: "/" }); 
+      // const db = firebase.firestore();
+      // db.collection("users")
+      //   .doc(res.user.uid)
+      //   .set({
+      //     name: JSON.stringify(res.user.displayName),
+      //     email: JSON.stringify(res.user.email),
+      //   })
+      const headers = { "Authorization": res.user.uid };
+      fetch("http://34.93.10.131/get", { headers }).then((response) =>{
+        const data = response.json();
+        return data;
+      })
+      .then((data)=>{  console.log(data);
+        if(!data.user_exists)
+        {
+          const requestOptions = {
+            method: 'POST',
+            headers: { "Authorization": res.user.uid },
+            body:JSON.stringify({
+              uid:res.user.uid,
+              email: res.user.email,
+            })
+        };
+          const headers = { "Authorization": res.user.uid }
+          fetch(" http://34.93.10.131/register",requestOptions ).then((response) =>{
+            const data = response.json();
+            return data;
+          })
+          .then((data)=>{console.log(data)})
+        }})
+        .catch((error) => {
+          console.log(error.message);
         });
-
-      cookie.save("firebaseUid", res.user.uid, { path: "/" });
+        cookie.save("firebaseUid", res.user.uid, { path: "/" });
       window.location.href = "/dashboard";
       console.log(res);
     })
     .catch((error) => {
       console.log(error.message);
     });
-};
+}
 
 export const logOut = () => {
   cookie.remove("key");
   window.location.reload();
-};
+}
 
-/*
-  Storing the idtoken in the key 
-  create a user document in the users collection with the fields name and email
-
-*/
