@@ -1,0 +1,9 @@
+.search-box{
+    background: #F5F5F5;
+border-radius: 8px;
+border: transparent;
+height: 3rem;
+}
+ul {
+    list-style-type: none;
+}

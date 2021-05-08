@@ -1,6 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import React, { useEffect, useState,Component } from 'react';
 import cookie from "react-cookies";
+import "./Autocomplete.css";
 
 const Autocomplete =({options}) =>
 {
@@ -48,7 +49,6 @@ const Autocomplete =({options}) =>
   },[userInput]);
 
   function onSelect(e) {
-     
     setactiveOption(0);
       setshowOptions(false);
       setfilteredOptions([]);
@@ -66,13 +66,13 @@ const Autocomplete =({options}) =>
       if (activeOption === 0) {
         return;
       }
-      setactiveOption(activeOption - 1 );
+      setactiveOption(activeOption - 1 ); 
     } else if (e.keyCode === 40) {
       if (activeOption === filteredOptions.length - 1) {
         console.log(activeOption);
         return;
       }
-      setactiveOption(activeOption + 1 );
+      setactiveOption(activeOption + 1 ); 
     }
   };
 
@@ -120,7 +120,7 @@ const Autocomplete =({options}) =>
             onKeyDown={onKeyDown}
             value={userInput}
           />
-          <input type="submit" value="" className="search-btn" />
+          {/* <input type="submit" value="" className="search-btn" /> */}
         </div>
         {optionList}
       </React.Fragment>

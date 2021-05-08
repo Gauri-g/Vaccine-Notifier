@@ -1,20 +1,41 @@
 import React, { useEffect, useContext, useState } from "react";
-import "./Login.css";
-import { signInWithGoogle } from "./services/firebase";
+
 import { UserContext } from "./providers/UserProvider";
 import { Redirect, Link } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import "bootstrap/dist/css/bootstrap.css";
+import "./Login.css";
+import GButton from "./components/Login/GButton";
+import Navbar from "./components/Login/Navbar";
+import How from "./components/Login/How";
+import Card from "./components/Login/Card";
 
 export default function Login() {
   return (
-    <div className="login-buttons">
-      <button className="login-provider-button" onClick={signInWithGoogle}>
-        <img
-          src="https://img.icons8.com/ios-filled/50/000000/google-logo.png"
-          alt="google icon"
-        />
-        <span> Continue with Google</span>
-      </button>
+    <>
+    <Navbar />
+    <div className="container col-lg-6 col-xs-12 col-md-6 ">
+      <div className="name"><h3>Website Name</h3></div>
+      <div className="gbutton"><h6> This is a website that will blah blah blah Lorpesum dunb  gfyugxia </h6></div>
+      <div className="gbutton"><GButton /></div>
+      <div><How /></div>
+      <button className="privacy" >Privacy Policy</button>
     </div>
+    <div className="container col-lg-12 col-xs-12 col-md-12 " id="otherresources">
+    <div className="web gbutton"><h6>A curated list of websites that are actively helping all of us in this fight against the pandemic.</h6></div>
+    <div className="row">
+      <Card />
+      <Card />
+    </div>
+    <div className="row">
+      <Card />
+      <Card />
+    </div>
+    <div className="row">
+      <Card />
+      <Card />
+     </div>
+    </div>
+    </>
   );
 }

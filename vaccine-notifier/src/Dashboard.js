@@ -8,92 +8,43 @@ import firebase from "firebase/app";
 import cookie, { removeCookie } from "react-cookies";
 import "firebase/firestore";
 import Autocomplete from "./components/AutoComplete/Autocomplete";
+import UserNavbar from "./components/Dashboard/UserNavbar.js";
+import How from "./components/Dashboard/How";
+import Card from "./components/Login/Card";
+import Form from "./components/Register/Form";
 require("firebase/auth");
 
 export default function Dashboard() {
-  const cityRef = useRef("");
-  const [selectedOption, setselectedOption] = useState("");
-  
-
-  function onValueChange(event) {
-    setselectedOption(event.target.value);
-  }
-
-  function submitHandler(event) {
-    event.preventDefault();
-    const uid = cookie.load("firebaseUid");
-    const firecity = cookie.load("firebasecity");
-    const db = firebase.firestore();
-
-    db.collection("users")
-      .doc(uid)
-      .update({
-        city: firecity,
-        age: selectedOption,
-      })
-      .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-      })
-      .catch((error) => {
-        console.error("Error adding document: ", error);
-      });
-  }
 
   return (
     <>
-      <div>
-        <form onSubmit={submitHandler}>
-          <div>
-            <div className="radio">
-              <label>
-                <input
-                  type="radio"
-                  value="Below45"
-                  checked={selectedOption === "Below45"}
-                  onChange={onValueChange}
-                />
-                Below 45
-              </label>
-            </div>
-            <div className="radio">
-              <label>
-                <input
-                  type="radio"
-                  value="Above45"
-                  checked={selectedOption === "Above45"}
-                  onChange={onValueChange}
-                />
-                Above 45
-              </label>
-            </div>
-            {/* <input type="text" id="city" ref={cityRef} placeholder="City" /> */}
-          </div>
-          <div> 
-          </div>
-          <Autocomplete
-        options={[
-          "Dehradun",
-          "Kolkata",
-          "Delhi",
-          "Mumbai",
-          "Banglore",
-          "Vellore",
-          "Agra"
-        ]}
-      />
-          <button> Submit </button>
-        </form>
+      <UserNavbar />
+    <div className="container col-lg-6 col-xs-12 col-md-6 ">
+      <div className="name"><h3>Some Placeholder Title</h3></div>
+      <div className="text">
+        <Form />
       </div>
-      <div className="dashboard">
-        <h1 className="dashboard-text">Welcome Home</h1>
-        <button className="logout-button" onClick={logOut}>
-          <img
-            src="https://img.icons8.com/ios-filled/50/000000/google-logo.png"
-            alt="google icon"
-          />
-          <span> logout</span>
-        </button>
+      <div><How /></div>
+      <div className="bug">
+      <button className="privacy" >Report a bug</button>
+      <button className="privacy" >Privacy Policy</button>
       </div>
+    </div>
+    <div className="container col-lg-12 col-xs-12 col-md-12 " id="otherresources">
+    <div className="web tt"><h6>A curated list of websites that are actively helping all of us in this fight against the pandemic.</h6></div>
+    <div className="row">
+      <Card />
+      <Card />
+    </div>
+    <div className="row">
+      <Card />
+      <Card />
+    </div>
+    <div className="row">
+      <Card />
+      <Card />
+     </div>
+    </div>
     </>
   );
 }

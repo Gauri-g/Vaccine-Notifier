@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.radio {
+  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.text {
+  display: flex;
+  justify-content: flex-start;
+  letter-spacing: 1.5px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.location {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.save {
+  display: block;
+  margin: 0 auto; 
+  height: 3rem;
+  border: transparent;
+  background: #5489f0;
+  border-radius: 8px;
+  color: white; 
+  padding:0.75rem 1.5rem;
+  align-content: center;
+  font-family: Montserrat;
+  margin-top: 4rem;
+}
+
+.savebutton{
+    margin-top: 14rem;
+}
