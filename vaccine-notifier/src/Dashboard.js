@@ -26,8 +26,11 @@ export default function Dashboard() {
       return data;
     })
     .then((data)=>{console.log(data,"hereeee");
+    if(data.user_exists)
+    {
     setDistrict(data.data.district);
     setAge(data.data.age); 
+    }
   })
    
     },[]);

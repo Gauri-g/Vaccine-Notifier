@@ -168,7 +168,6 @@ const Form = (props) => {
        </div> 
        </div>
            <div><button class="save"> Edit</button> </div>
-       
          </form>
          </div>
        </>

@@ -3,7 +3,7 @@ import React, { useEffect, useState,Component } from 'react';
 import cookie from "react-cookies";
 import "./Autocomplete.css";
 
-const Autocomplete =({options}) =>
+const Autocomplete =({options,district}) =>
 {
   // state = {
   //   activeOption: 0,
@@ -23,7 +23,8 @@ const Autocomplete =({options}) =>
   const [activeOption, setactiveOption] = useState(0);
   const [filteredOptions, setfilteredOptions] = useState([]);
   const [showOptions, setshowOptions] = useState(false);
-  const [userInput, setuserInput] = useState('');
+  const [userInput, setuserInput] = useState(district || "");
+  const [disabled, setDisabled] = useState(district ? true : false);
 
   function onChange (e)  {
     console.log('onChanges');
@@ -118,7 +119,9 @@ const Autocomplete =({options}) =>
             className="search-box"
             onChange={onChange} 
             onKeyDown={onKeyDown}
-            value={userInput}
+
+            value={district ? district : userInput}
+            readonly
           />
           {/* <input type="submit" value="" className="search-btn" /> */}
         </div>
