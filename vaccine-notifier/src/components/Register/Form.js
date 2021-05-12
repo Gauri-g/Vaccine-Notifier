@@ -16,7 +16,7 @@ const Form = (props) => {
 
     useEffect(()=>{setDistrict(props.district);
     setAge(props.age); 
-    if(district!=="" && edit == true)
+    if(district!=="" && edit === false)
     { 
       setselectedOption(props.age); 
     }
@@ -129,8 +129,9 @@ const Form = (props) => {
     )
    }
 
-   else if(district!=="" )
+   else  
    {  
+     if(edit){
      return(
          <>
          <div className="container">
@@ -192,11 +193,9 @@ const Form = (props) => {
          </div>
        </>
      )
-    }
-
-    //Edit Button form
-
-   else if(district!=="" && edit==true)
+    } 
+    
+   else  
    {
      return(
          <>
@@ -250,7 +249,7 @@ const Form = (props) => {
        </>
      )
     }
-    
+  }
 
 
 };
