@@ -1,13 +1,8 @@
 import React from "react";
 import "./Dashboard.css";
-import { useEffect, useContext, useState, useRef } from "react";
-import { UserContext } from "./providers/UserProvider";
-import { Redirect } from "react-router-dom";
-import { logOut } from "./services/firebase";
-import firebase from "firebase/app";
-import cookie, { removeCookie } from "react-cookies";
-import "firebase/firestore";
-import Autocomplete from "./components/AutoComplete/Autocomplete";
+import { useEffect,useState} from "react"; 
+import cookie from "react-cookies";
+import "firebase/firestore"; 
 import UserNavbar from "./components/Dashboard/UserNavbar.js";
 import How from "./components/Dashboard/How";
 import Card from "./components/Login/Card";
