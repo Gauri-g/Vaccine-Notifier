@@ -19,13 +19,14 @@ const Autocomplete =({options,district}) =>
   //   "Banglore",
   //   "Vellore",
   //   "Agra"
-  // ]
+  // ] 
   const [activeOption, setactiveOption] = useState(0);
   const [filteredOptions, setfilteredOptions] = useState([]);
   const [showOptions, setshowOptions] = useState(false);
-  const [userInput, setuserInput] = useState(district || "");
+  const [userInput, setuserInput] = useState(district|| "");
+  console.log(userInput,"initial");
   const [disabled, setDisabled] = useState(district ? true : false);
-
+   
   function onChange (e)  {
     console.log('onChanges');
     console.log(e.target.value);
@@ -119,10 +120,10 @@ const Autocomplete =({options,district}) =>
             className="search-box"
             onChange={onChange} 
             onKeyDown={onKeyDown}
-            id=""
-            value={district ? district: userInput}
+            id="" 
+            placeholder={district}
+            value={userInput}
           />
-          {/* <input type="submit" value="" className="search-btn" /> */}
         </div>
         {optionList}
       </React.Fragment>

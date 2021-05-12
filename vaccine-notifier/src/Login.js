@@ -18,24 +18,25 @@ export default function Login() {
       <div className="name"><h3>Website Name</h3></div>
       <div className="gbutton"><h6> This is a website that will blah blah blah Lorpesum dunb  gfyugxia </h6></div>
       <div className="gbutton"><GButton /></div>
-      <div><How /></div>
+      <div ><How /></div>
       <button className="privacy" >Privacy Policy</button>
     </div>
     <div className="container col-lg-12 col-xs-12 col-md-12 " id="otherresources">
     <div className="web gbutton"><h6>A curated list of websites that are actively helping all of us in this fight against the pandemic.</h6></div>
-    <div className="row">
-      <Card />
-      <Card />
+     <div className="row "> 
+    <Card />
+    <Card />
     </div>
     <div className="row">
-      <Card />
-      <Card />
+    <Card />
+    <Card />
     </div>
     <div className="row">
-      <Card />
-      <Card />
-     </div>
+    <Card />
+    <Card />
     </div>
+    </div>
+  
     </>
   );
 }

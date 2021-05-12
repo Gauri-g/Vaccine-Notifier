@@ -40,7 +40,7 @@ export default function Dashboard() {
       <UserNavbar />
     <div className="container col-lg-6 col-xs-12 col-md-6 ">
       <div className="name"><h3>Some Placeholder Title</h3></div>
-      <div className="text">
+      <div className="form">
         <Form district={district} age={age}/>
       </div>
       <div><How /></div>

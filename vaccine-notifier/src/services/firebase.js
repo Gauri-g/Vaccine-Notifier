@@ -23,9 +23,10 @@ export const auth = firebase.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 export const signInWithGoogle = () => {
-  auth
-    .signInWithPopup(googleProvider)
+  (auth
+    .signInWithPopup(googleProvider))
     .then((res) => { 
+      cookie.save("key", res.credential.idToken, { path: "/" });
       console.log("Below key"); 
       // const db = firebase.firestore();
       // db.collection("users")
@@ -63,7 +64,6 @@ export const signInWithGoogle = () => {
           console.log(error.message);
         });
       cookie.save("firebaseUid", res.user.uid, { path: "/" });
-      cookie.save("key", res.credential.idToken, { path: "/" });
       window.location.href = "/dashboard";
       console.log(res);
     })

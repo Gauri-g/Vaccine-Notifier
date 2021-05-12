@@ -16,7 +16,7 @@
   line-height: 44px;
   letter-spacing: 0.25px;
   text-align: left;
-  margin-top: 10rem;
+  margin-top: 15%;
 }
 
 .text {
@@ -29,7 +29,7 @@
   display: flex;
   justify-content: center;
   font-family: Montserrat;
-  margin-top: 1.5em;
+  margin-top: 5%;
 }
 
 .card-deck
@@ -41,17 +41,24 @@
 	margin-bottom:2.5em;
 	font-weight: 400;
 }
+
 .privacy{
 	border: transparent;
 	background-color:  transparent;
 	justify-content: center;
-	margin-bottom: 8rem;
+	margin-bottom: 5%;
   padding : 1rem;
 }
 
 .row{
 	display: flex;
 	justify-content: space-between;
+  margin: 0%!important;
+  padding: 0%;
+}
+.margin0{
+  margin-top: 0%;
+  padding: 0%;
 }
 @media screen and (min-width: 25em){
 	html { font-size: calc( 16px + (24 - 16) * (100vw - 400px) / (800 - 400) ); }
@@ -60,3 +67,13 @@
   @media screen and (min-width: 50em){
   html { font-size:  1rem }
   }
+
+  @media screen and (max-width: 786px) {
+    .name {
+      margin-top: 35%;
+    }
+    .gbutton{
+      margin-top:20%;
+    }
+  }
+  

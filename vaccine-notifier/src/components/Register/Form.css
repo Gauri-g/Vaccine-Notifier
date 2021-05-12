@@ -19,12 +19,7 @@
 .row {
   display: flex;
   justify-content: space-between;
-}
-
-.location {
-  display: flex;
-  justify-content: flex-end;
-}
+} 
 
 .save {
   display: block;
@@ -43,3 +38,43 @@
 .savebutton{
     margin-top: 14rem;
 }
+
+@media screen and (min-width: 786px) {
+.location {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.text {
+  display: flex;
+  justify-content: flex-start;
+  letter-spacing: 1.5px;
+}
+.radio {
+  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+}
+
+@media screen and (max-width: 786px) {
+  .location {
+    display: flex;
+    justify-content: center;
+    margin-top: 20%!important;
+  }
+
+  .text {
+    display: flex;
+    justify-content: center;
+    letter-spacing: 1.5px;
+  }
+
+  .radio {
+    display: inline-block;
+    display: flex; 
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  }

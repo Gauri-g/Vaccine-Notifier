@@ -9,14 +9,14 @@ require("firebase/auth");
 
 const Form = (props) => {
     const cityRef = useRef("");
-    let [edit, setEdit] = useState(false); 
-    const [selectedOption, setselectedOption] = useState("");
+    const [edit, setEdit] = useState(false); 
+    const [selectedOption, setselectedOption] = useState(props.age||0);
     const [district, setDistrict] = useState("");
     const [age, setAge] = useState(0); 
 
     useEffect(()=>{setDistrict(props.district);
     setAge(props.age); 
-    if(props.district!=="")
+    if(district!=="" && edit == true)
     { 
       setselectedOption(props.age); 
     }
@@ -68,7 +68,7 @@ const Form = (props) => {
     return(
         <>
         <div className="container">
-        <form name="" onSubmit={submitHandler}>
+        <form onSubmit={submitHandler}>
           <div className="row">
           <div className="col-lg-6 col-xs-12 col-md-6">
             <div className="text"><h6>AGE GROUP</h6></div>
@@ -129,15 +129,15 @@ const Form = (props) => {
     )
    }
 
-   else if(district!=="" && edit===true)
-   {
+   else if(district!=="" )
+   {  
      return(
          <>
          <div className="container">
-         <form>
+         <form onSubmit={submitHandler}>
            <div className="row">
-           <div className="col-lg-6 col-xs-12 col-md-6">
-             <div className="text"><h6>AGE GROUP</h6></div>
+           <div className="col-lg-6 col-xs-12 col-md-6 ">
+             <div className="text "><h6>AGE GROUP</h6></div>
              <div className="radio">
                <label>
                  <input
@@ -152,7 +152,7 @@ const Form = (props) => {
                  <input
                    type="radio"
                    value="18"
-                   checked={selectedOption === "18"}
+                   checked={selectedOption == 18}
                    onChange={onValueChange} 
                  />
                  18-45
@@ -161,7 +161,7 @@ const Form = (props) => {
                  <input
                    type="radio"
                    value="45"
-                   checked={selectedOption === "45"}
+                   checked={selectedOption == 45}
                    onChange={onValueChange} 
                  />
                  45+
@@ -170,7 +170,7 @@ const Form = (props) => {
            </div>
            <div className="location col-lg-6 col-xs-12 col-md-6">
              <div>
-             <div className="text"><h6>LOCATION</h6></div>
+             <div className="text "><h6>LOCATION</h6></div>
            <Autocomplete
          options={[
           "Dehradun",
@@ -196,7 +196,7 @@ const Form = (props) => {
 
     //Edit Button form
 
-   else if(district!=="")
+   else if(district!=="" && edit==true)
    {
      return(
          <>
