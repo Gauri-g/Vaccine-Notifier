@@ -16,9 +16,11 @@
     "react-bootstrap": "^1.5.2",
     "react-cookies": "^0.1.1",
     "react-dom": "^17.0.2",
+    "react-modal": "^3.13.1",
     "react-responsive": "^8.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "reactjs-popup": "^2.0.4",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -44,5 +46,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  } 
+  }
 }

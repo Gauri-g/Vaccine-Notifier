@@ -120,8 +120,7 @@ const Autocomplete =({options,district}) =>
             className="search-box"
             onChange={onChange} 
             onKeyDown={onKeyDown}
-            id="" 
-            placeholder={district}
+            id=""  
             value={userInput}
           />
         </div>

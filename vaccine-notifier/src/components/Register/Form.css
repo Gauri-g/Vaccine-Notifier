@@ -45,6 +45,10 @@
   justify-content: flex-end;
 }
 
+.modal{
+  border-radius: 8px;
+}
+
 .text {
   display: flex;
   justify-content: flex-start;
