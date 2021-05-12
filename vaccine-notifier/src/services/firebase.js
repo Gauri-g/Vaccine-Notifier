@@ -25,9 +25,8 @@ const googleProvider = new firebase.auth.GoogleAuthProvider();
 export const signInWithGoogle = () => {
   auth
     .signInWithPopup(googleProvider)
-    
     .then((res) => { 
-      cookie.save("key", res.credential.idToken, { path: "/" }); 
+      console.log("Below key"); 
       // const db = firebase.firestore();
       // db.collection("users")
       //   .doc(res.user.uid)
@@ -35,12 +34,14 @@ export const signInWithGoogle = () => {
       //     name: JSON.stringify(res.user.displayName),
       //     email: JSON.stringify(res.user.email),
       //   })
+      console.log("Above header");  
       const headers = { "Authorization": res.user.uid };
       fetch("http://34.93.10.131/get", { headers }).then((response) =>{
-        const data = response.json();
+      console.log("Below header");  
+      const data = response.json();
         return data;
       })
-      .then((data)=>{  console.log(data);
+      .then((data)=>{  console.log(data,"idhar");
         if(!data.user_exists)
         {
           const requestOptions = {
@@ -61,7 +62,8 @@ export const signInWithGoogle = () => {
         .catch((error) => {
           console.log(error.message);
         });
-        cookie.save("firebaseUid", res.user.uid, { path: "/" });
+      cookie.save("firebaseUid", res.user.uid, { path: "/" });
+      cookie.save("key", res.credential.idToken, { path: "/" });
       window.location.href = "/dashboard";
       console.log(res);
     })

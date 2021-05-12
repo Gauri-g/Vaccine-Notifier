@@ -16,7 +16,7 @@ require("firebase/auth");
 
 export default function Dashboard() {
   const [district,setDistrict] = useState("");
-  const [age,setAge ] = useState("");
+  const [age,setAge ] = useState(0);
   useEffect(
    () =>{
     const uid = cookie.load("firebaseUid");

@@ -119,9 +119,8 @@ const Autocomplete =({options,district}) =>
             className="search-box"
             onChange={onChange} 
             onKeyDown={onKeyDown}
-
-            value={district ? district : userInput}
-            readonly
+            id=""
+            value={district ? district: userInput}
           />
           {/* <input type="submit" value="" className="search-btn" /> */}
         </div>
