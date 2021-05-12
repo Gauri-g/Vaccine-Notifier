@@ -230,7 +230,7 @@ const Form = (props) => {
                 </div>
               </div>
               <div>
-                <button onClick={openModal} class="save"> Update details</button>
+                <button onClick={openModal} className="save"> Update details</button>
                 <div className="container"><Modal 
                   isOpen={modalIsOpen} 
                   onRequestClose={closeModal}
@@ -300,10 +300,9 @@ const Form = (props) => {
                 </div>
               </div>
               <div>
-                <button class="save" onClick={Editcall}>
-                  {" "}
+                <button className="save" onClick={Editcall}>
                   Edit
-                </button>{" "}
+                </button> 
               </div>
             </form>
           </div>
