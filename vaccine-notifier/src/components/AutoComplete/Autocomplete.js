@@ -1,31 +1,15 @@
-import userEvent from '@testing-library/user-event';
-import React, { useEffect, useState,Component } from 'react';
+ import React, { useEffect, useState} from 'react';
 import cookie from "react-cookies";
 import "./Autocomplete.css";
 
 const Autocomplete =({options,district}) =>
-{
-  // state = {
-  //   activeOption: 0,
-  //   filteredOptions: [],
-  //   showOptions: false,
-  //   userInput: ''
-  // };
-  // let options=[
-  //   "Dehradun",
-  //   "Kolkata",
-  //   "Delhi",
-  //   "Mumbai",
-  //   "Banglore",
-  //   "Vellore",
-  //   "Agra"
-  // ] 
+{ 
   const [activeOption, setactiveOption] = useState(0);
   const [filteredOptions, setfilteredOptions] = useState([]);
   const [showOptions, setshowOptions] = useState(false);
   const [userInput, setuserInput] = useState(district|| "");
   console.log(userInput,"initial");
-  const [disabled, setDisabled] = useState(district ? true : false);
+   
    
   function onChange (e)  {
     console.log('onChanges');
@@ -41,14 +25,14 @@ const Autocomplete =({options,district}) =>
       (optionName) =>
         {console.log(optionName.indexOf(userInput))
           return optionName.toLowerCase().indexOf(userInput.toLowerCase()) > -1}
-    )
+    ) 
   )
       // setactiveOption(0);
       setshowOptions(true);
       // setfilteredOptions([]);
       // setuserInput(activeOption.innerText)  
     // cookie.save("firebasecity", activeOption.innerText, { path: "/" });
-  },[userInput]);
+  },[userInput,options]);
 
   function onSelect(e) {
     setactiveOption(0);

@@ -6,29 +6,29 @@ import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <nav class="navbar navbar-expand-md bg-light navbar-light ">
-      <a class="navbar-brand" href="#">
+    <nav className="navbar navbar-expand-md bg-light navbar-light ">
+      <a className="navbar-brand" href="/#">
         Icon
       </a>
 
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#collapsibleNavbar"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+      <div className="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <a className="nav-link" href="/#">
               Home
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#otherresources">
+          <li className="nav-item">
+            <a className="nav-link" href="#otherresources">
               Other Resources
             </a>
           </li>

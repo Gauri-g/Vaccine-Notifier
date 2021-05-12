@@ -9,7 +9,7 @@ const Card = () => {
           <div><h5 className="card-title">H6 - Website Name</h5>
           <div className="card-text">
             <p>Meta description of the website in about two lines in this card. If it exceeds two lines then terminate with period. Let’s use word count.</p>
-            <a href="#" className="link">Link</a>
+            <a href="/#" className="link">Link</a>
           </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState} from "react";
 import Autocomplete from "../AutoComplete/Autocomplete";
 import cookie from "react-cookies";
 import "./Form.css"; 
@@ -7,8 +7,7 @@ import "firebase/firestore";
 require("firebase/auth");
 
 
-const Form = (props) => {
-  const cityRef = useRef(""); 
+const Form = (props) => { 
   const [edit, setEdit] = useState(false);
   const [selectedOption, setselectedOption] = useState(props.age || 0);
   const [district, setDistrict] = useState("");
@@ -38,9 +37,9 @@ const Form = (props) => {
     setDistrict(props.district);
     setAge(props.age);
     if (district !== "" && edit === false) {
-      setselectedOption(props.age);
+      setselectedOption(age);
     }
-  });
+  },[age,edit,district,props.age,props.district]);
 
   function onValueChange(event) {
     setselectedOption(event.target.value);
@@ -101,7 +100,7 @@ const Form = (props) => {
                     <input
                       type="radio"
                       value="all"
-                      checked={selectedOption == "all"}
+                      checked={selectedOption === "all"}
                       onChange={onValueChange}
                     />
                     All
@@ -110,7 +109,7 @@ const Form = (props) => {
                     <input
                       type="radio"
                       value="18"
-                      checked={selectedOption == 18}
+                      checked={selectedOption === 18}
                       onChange={onValueChange}
                     />
                     18-45
@@ -119,7 +118,7 @@ const Form = (props) => {
                     <input
                       type="radio"
                       value="45"
-                      checked={selectedOption == 45}
+                      checked={selectedOption === 45}
                       onChange={onValueChange}
                     />
                     45+
@@ -191,7 +190,7 @@ const Form = (props) => {
                       <input
                         type="radio"
                         value="18"
-                        checked={selectedOption == 18}
+                        checked={selectedOption === 18}
                         onChange={onValueChange}
                       />
                       18-45
@@ -200,7 +199,7 @@ const Form = (props) => {
                       <input
                         type="radio"
                         value="45"
-                        checked={selectedOption == 45}
+                        checked={selectedOption === 45}
                         onChange={onValueChange}
                       />
                       45+
@@ -271,7 +270,7 @@ const Form = (props) => {
                       <input
                         type="radio"
                         value="18"
-                        checked={selectedOption == 18}
+                        checked={selectedOption === 18}
                       />
                       18-45
                     </label>
@@ -279,7 +278,7 @@ const Form = (props) => {
                       <input
                         type="radio"
                         value="45"
-                        checked={selectedOption == 45}
+                        checked={selectedOption === 45}
                       />
                       45+
                     </label>

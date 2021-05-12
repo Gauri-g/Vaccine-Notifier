@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import firebase from "firebase/app";
-import cookie, { removeCookie } from "react-cookies";
+import cookie from "react-cookies";
 import "firebase/firestore";
 require("firebase/auth");
 
@@ -52,8 +52,7 @@ export const signInWithGoogle = () => {
               uid:res.user.uid,
               email: res.user.email,
             })
-        };
-          const headers = { "Authorization": res.user.uid }
+        }; 
           fetch(" http://34.93.10.131/register",requestOptions ).then((response) =>{
             const data = response.json();
             return data;

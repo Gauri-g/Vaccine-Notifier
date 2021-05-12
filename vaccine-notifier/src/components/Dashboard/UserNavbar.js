@@ -8,7 +8,7 @@ import { logOut } from "../../services/firebase";
 const UserNavbar = () => {
   return (
     <nav className="navbar navbar-expand-md bg-light navbar-light ">
-      <a className="navbar-brand" href="#">
+      <a className="navbar-brand" href="/#">
         Icon
       </a>
 
@@ -24,7 +24,7 @@ const UserNavbar = () => {
       <div className="collapse navbar-collapse" id="collapsibleNavbar">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="/#">
               Home
             </a>
           </li>
