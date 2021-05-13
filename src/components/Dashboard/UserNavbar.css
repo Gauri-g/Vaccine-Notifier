@@ -21,11 +21,11 @@
 
 @media screen and (max-width: 786px) {
     .navbar {
-      padding:5% 10%;
+      padding:5% 8%;
     }
   }
   @media screen and (min-width: 786px) {
     .navbar {
-      padding:2% 4%;
+      padding:2% 3%;
     }
   }
