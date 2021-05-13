@@ -6,7 +6,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-md bg-light navbar-light ">
+    <nav className="navbar padding0 navbar-expand-md bg-light navbar-light ">
       <a className="navbar-brand" href="/#">
         Icon
       </a>
