@@ -7,7 +7,7 @@ import { logOut } from "../../services/firebase";
 
 const UserNavbar = () => {
   return (
-    <nav className="navbar navbar-expand-md bg-light navbar-light ">
+    <nav className="navbar navbar-expand-md navbar-light ">
       <a className="navbar-brand" href="/#">
         Icon
       </a>

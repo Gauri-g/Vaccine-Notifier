@@ -2,7 +2,7 @@
 
 .navbar{
     width:100%; 
-    background: transparent;
+    background-color: white;
     font-family: Montserrat;
 }
 
@@ -13,6 +13,9 @@
 .nav-item{
     padding: 0 1.5rem;
 }
+.nav-link{
+    color:black; 
+}
 
 @media screen and (max-width: 786px) {
     .navbar {
@@ -21,6 +24,6 @@
   }
   @media screen and (min-width: 786px) {
     .navbar {
-      padding:2% 3%;
+      padding:2% 5%;
     }
   }
