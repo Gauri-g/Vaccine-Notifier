@@ -5,6 +5,6 @@ border: transparent;
 height: 3rem;
 padding:5%;
 }
-ul {
+.options {
     list-style-type: none;
 }

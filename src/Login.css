@@ -29,6 +29,7 @@
   display: flex;
   justify-content: center;
   font-family: Montserrat;
+  align-content: center;
   margin-top: 5%;
 }
 
@@ -74,6 +75,15 @@
     }
     .gbutton{
       margin-top:20%;
+    }
+    .margintop{
+      margin-top: 20%;
+    }
+  }
+
+  @media screen and (min-width: 786px) {
+    .margintop{
+      margin-top: 10%;
     }
   }
   

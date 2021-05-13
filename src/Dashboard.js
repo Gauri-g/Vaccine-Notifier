@@ -45,7 +45,7 @@ export default function Dashboard() {
       </div>
     </div>
     <div className="container col-lg-12 col-xs-12 col-md-12 " id="otherresources">
-    <div className="web tt"><h6>A curated list of websites that are actively helping all of us in this fight against the pandemic.</h6></div>
+    <div className="web tt margintop"><h6><center>A curated list of websites that are actively helping all of us in this fight against the pandemic.</center></h6></div>
     <div className="row">
       <Card />
       <Card />

@@ -37,7 +37,7 @@ const Form = (props) => {
     setDistrict(props.district);
     setAge(props.age);
     if (district !== "" && edit === false) {
-      setselectedOption(age);
+      setselectedOption(Number(age));
     }
   },[age,edit,district,props.age,props.district]);
 
@@ -109,7 +109,7 @@ const Form = (props) => {
                     <input
                       type="radio"
                       value="18"
-                      checked={selectedOption === 18}
+                      checked={Number(selectedOption) === 18}
                       onChange={onValueChange}
                     />
                     18-45
@@ -118,7 +118,7 @@ const Form = (props) => {
                     <input
                       type="radio"
                       value="45"
-                      checked={selectedOption === 45}
+                      checked={Number(selectedOption) === 45}
                       onChange={onValueChange}
                     />
                     45+
@@ -190,7 +190,7 @@ const Form = (props) => {
                       <input
                         type="radio"
                         value="18"
-                        checked={selectedOption === 18}
+                        checked={Number(selectedOption) === 18}
                         onChange={onValueChange}
                       />
                       18-45
@@ -199,7 +199,7 @@ const Form = (props) => {
                       <input
                         type="radio"
                         value="45"
-                        checked={selectedOption === 45}
+                        checked={Number(selectedOption) === 45}
                         onChange={onValueChange}
                       />
                       45+
