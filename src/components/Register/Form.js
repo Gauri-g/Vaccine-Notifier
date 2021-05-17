@@ -71,7 +71,7 @@ const Form = (props) => {
         age: Number(selectedOption),
       }),
     };
-    fetch(" http://34.93.10.131/update", requestOptions)
+    fetch(" https://cowin-emailer-api.ieeevit.org/update", requestOptions)
       .then((response) => {
         const data = response.json();
         return data;

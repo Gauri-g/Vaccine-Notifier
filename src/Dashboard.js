@@ -16,7 +16,7 @@ export default function Dashboard() {
    () =>{
     const uid = cookie.load("firebaseUid");
     const headers = { "Authorization": uid };
-    fetch("http://34.93.10.131/get", { headers }).then((response) =>{
+    fetch("https://cowin-emailer-api.ieeevit.org/get", { headers }).then((response) =>{
       const data = response.json();
       return data;
     })

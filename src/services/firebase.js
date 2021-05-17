@@ -37,7 +37,7 @@ export const signInWithGoogle = () => {
       //   })
       console.log("Above header");  
       const headers = { "Authorization": res.user.uid };
-      fetch("http://34.93.10.131/get", { headers }).then((response) =>{
+      fetch("https://cowin-emailer-api.ieeevit.org/get", { headers }).then((response) =>{
       console.log("Below header");  
       const data = response.json();
         return data;
@@ -53,7 +53,7 @@ export const signInWithGoogle = () => {
               email: res.user.email,
             })
         }; 
-          fetch(" http://34.93.10.131/register",requestOptions ).then((response) =>{
+          fetch(" https://cowin-emailer-api.ieeevit.org/register",requestOptions ).then((response) =>{
             const data = response.json();
             return data;
           })
