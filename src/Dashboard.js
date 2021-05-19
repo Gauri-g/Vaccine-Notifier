@@ -12,7 +12,7 @@ require("firebase/auth");
 export default function Dashboard() {
   const [district,setDistrict] = useState("");
   const [age,setAge ] = useState(0);
-  let mail="";
+  const [mail,setMail ] = useState(""); 
   useEffect(
    () =>{
     const uid = cookie.load("firebaseUid");
@@ -26,7 +26,7 @@ export default function Dashboard() {
     {
     setDistrict(data.data.district);
     setAge(data.data.age); 
-    mail=data.data.email;
+    setMail(data.data.email);
     }
   })
    
