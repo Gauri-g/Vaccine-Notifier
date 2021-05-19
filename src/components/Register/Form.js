@@ -100,6 +100,7 @@ const Form = (props) => {
                     <input
                       type="radio"
                       value="all"
+                      className="radiobtn"
                       checked={selectedOption === "all"}
                       onChange={onValueChange}
                     />
@@ -109,6 +110,7 @@ const Form = (props) => {
                     <input
                       type="radio"
                       value="18"
+                      className="radiobtn"
                       checked={Number(selectedOption) === 18}
                       onChange={onValueChange}
                     />
@@ -118,6 +120,7 @@ const Form = (props) => {
                     <input
                       type="radio"
                       value="45"
+                      className="radiobtn"
                       checked={Number(selectedOption) === 45}
                       onChange={onValueChange}
                     />
