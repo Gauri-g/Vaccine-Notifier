@@ -27,14 +27,7 @@ export const signInWithGoogle = () => {
     .signInWithPopup(googleProvider))
     .then((res) => { 
       cookie.save("key", res.credential.idToken, { path: "/" });
-      console.log("Below key"); 
-      // const db = firebase.firestore();
-      // db.collection("users")
-      //   .doc(res.user.uid)
-      //   .set({
-      //     name: JSON.stringify(res.user.displayName),
-      //     email: JSON.stringify(res.user.email),
-      //   })
+      console.log("Below key");  
       console.log("Above header");  
       const headers = { "Authorization": res.user.uid };
       fetch("https://cowin-emailer-api.ieeevit.org/get", { headers }).then((response) =>{

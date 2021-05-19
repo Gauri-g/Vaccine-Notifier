@@ -3,6 +3,7 @@ import Autocomplete from "../AutoComplete/Autocomplete";
 import cookie from "react-cookies";
 import "./Form.css"; 
 import Modal from 'react-modal';
+import ErrorModal from "./ErrorModal";
 import "firebase/firestore";
 require("firebase/auth");
 
@@ -48,21 +49,7 @@ const Form = (props) => {
   function submitHandler(event) {
     event.preventDefault();
     const uid = cookie.load("firebaseUid");
-    const firecity = cookie.load("firebasecity");
-    // const db = firebase.firestore();
-    // db.collection("users")
-    //   .doc(uid)
-    //   .update({
-    //     city: firecity,
-    //     age: selectedOption,
-    //   })
-    //   .then((docRef) => {
-    //     console.log("Document written with ID: ", docRef.id);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error adding document: ", error);
-    //   });
-
+    const firecity = cookie.load("firebasecity"); 
     const requestOptions = {
       method: "PATCH",
       headers: { Authorization: uid },
@@ -78,6 +65,11 @@ const Form = (props) => {
       })
       .then((data) => {
         console.log(data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        <ErrorModal />
+        window.location("/")
       });
   }
 
@@ -151,10 +143,12 @@ const Form = (props) => {
             </div>
             <div>
               <button onClick={openModal} className="save"> Save details</button>
-              <div className="container"><Modal 
+              <div className="container"> 
+                <Modal 
                   isOpen={modalIsOpen} 
                   onRequestClose={closeModal}
                   style={customStyles}
+                  ariaHideApp={false}
                   contentLabel="Example Modal" 
                 >
                   <div className="text">Icon</div> 

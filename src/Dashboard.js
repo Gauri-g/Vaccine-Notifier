@@ -29,6 +29,9 @@ export default function Dashboard() {
     setMail(data.data.email);
     }
   })
+  .catch((error) => {
+    console.log(error.message);
+  });
    
     },[]);
 

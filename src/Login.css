@@ -66,8 +66,8 @@
 
 .bg1{
   background-image:url("./background/bg.svg");
-  background-size: contain;
-  color: white;
+  background-size: contain; 
+  color: white; 
   width:100%;
 }
 

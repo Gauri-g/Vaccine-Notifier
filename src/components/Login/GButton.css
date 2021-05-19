@@ -19,6 +19,7 @@
   border: transparent;
   cursor: pointer;
   transition: transform 0.5s ease-in-out;
+  box-shadow: 0px 6px 30px rgba(108, 137, 255, 0.4);
 }
 
 .login-provider-button:hover {
