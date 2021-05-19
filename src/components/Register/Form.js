@@ -155,8 +155,8 @@ const Form = (props) => {
                   contentLabel="Example Modal" 
                 >
                   <div className="text">Icon</div> 
-                  <div className="text">You have succesfully registered for *website name*</div>
-                  <div className="text">Keep a lookout for any future alerts on vaccine availibilty</div>
+                  <div className="text">You have succesfully registered for the COWIN notifier.</div>
+                  <div className="text">Make sure to keep an eye on your slots!</div>
                   <button onClick={closeModal} className="button text">close</button>
                 </Modal> 
                 </div>

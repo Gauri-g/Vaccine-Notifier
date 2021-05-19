@@ -2,19 +2,24 @@
 
 .navbar{
     width:100%; 
-    background-color: white;
+    background-color: #3E64FF;
     font-family: Montserrat;
+    color:white;
 }
 
 .collapse{
     justify-content: flex-end;
 }
 
+.navbar-toggler{
+  color: white;
+}
+
 .nav-item{
     padding: 0 1.5rem;
 }
 .nav-link{
-    color:black; 
+    color:white!important; 
 }
 
 @media screen and (max-width: 786px) {
