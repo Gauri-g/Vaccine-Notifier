@@ -5,6 +5,7 @@ import GButton from "./components/Login/GButton";
 import Navbar from "./components/Login/Navbar";
 import How from "./components/Login/How";
 import Card from "./components/Login/Card";
+import bg from "./background/bg.svg";
 
 export default function Login() {
   return (
