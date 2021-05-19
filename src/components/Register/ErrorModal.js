@@ -16,7 +16,7 @@ const ErrorModal = () => {
   };
 
   const [modalIsOpen,setIsOpen] = useState(true); 
-
+console.log("I am modal");
   function closeModal(){
     setIsOpen(false); 
   }

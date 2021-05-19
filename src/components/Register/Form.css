@@ -11,12 +11,37 @@
   margin-top: 1rem;
 }
 
+.padding{
+  padding: 1rem;
+}
+
 .text {
   display: flex;
   justify-content: flex-start;
   letter-spacing: 1.5px;
 }
  
+.modalHeading
+{
+  margin-top:'30%';
+  font-size:'24px';
+  color:'#3E64FF';
+}
+.modalHeading2
+{
+  margin-top:'5%';
+  font-size:'20px'; 
+}
+.modalbtn
+{
+    background-color: '#3E64FF';
+    border-radius : '8px';
+    color:'white';
+    padding:'10px 50px';
+    border-color:'white';
+    font-size:'18px';
+    margin-top:'8%';
+}
 
 .radiobtn{
   width:14px;

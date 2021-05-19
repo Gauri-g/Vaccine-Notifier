@@ -32,7 +32,7 @@
 .bg2{
   background-image:url("./background/bg.svg");
   background-size: contain;
-  color: white;
+  color: white; 
   width:100%; 
 }
 

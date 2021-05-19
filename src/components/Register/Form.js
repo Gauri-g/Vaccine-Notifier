@@ -4,7 +4,8 @@ import cookie from "react-cookies";
 import "./Form.css"; 
 import Modal from 'react-modal';
 import ErrorModal from "./ErrorModal";
-import "firebase/firestore";
+import image from "../../background/bg3.svg";
+import "firebase/firestore"; 
 require("firebase/auth");
 
 
@@ -14,6 +15,7 @@ const Form = (props) => {
   const [district, setDistrict] = useState("");
   const [age, setAge] = useState(0);
   const [modalIsOpen,setIsOpen] = useState(false);
+  const [show,setShow] = useState(false);
   function openModal() {
     setIsOpen(true);
   }
@@ -30,8 +32,20 @@ const Form = (props) => {
       right                 : 'auto',
       bottom                : 'auto',
       marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)'
-    }
+      transform             : 'translate(-50%, -50%)', 
+      borderRadius          : '8px',
+      backgroundImage       : "url(" + image + ")",
+      backgroundSize        : 'contain' ,
+      backgroundRepeat      : 'no-repeat'
+    } ,
+    overlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(128, 128, 128, 0.9)'
+    },
   };
   
   useEffect(() => {
@@ -40,7 +54,7 @@ const Form = (props) => {
     if (district !== "" && edit === false) {
       setselectedOption(Number(age));
     }
-  },[age,edit,district,props.age,props.district]);
+  },[age,edit,district,props.age,props.district,show]);
 
   function onValueChange(event) {
     setselectedOption(event.target.value);
@@ -67,15 +81,20 @@ const Form = (props) => {
         console.log(data);
       })
       .catch((error) => {
-        console.log(error.message);
-        <ErrorModal />
-        window.location("/")
+        console.log(error.message); 
+        setShow(true);
       });
   }
 
   const Editcall = () => {
     setEdit(true);
   };
+
+  if(show===true)
+  {
+    console.log("yahah hu mein");
+    return(<ErrorModal />);
+  }
 
   if (district === "") {
     return (
@@ -151,10 +170,10 @@ const Form = (props) => {
                   ariaHideApp={false}
                   contentLabel="Example Modal" 
                 >
-                  <div className="text">Icon</div> 
-                  <div className="text">You have succesfully registered for the COWIN notifier.</div>
-                  <div className="text">Make sure to keep an eye on your slots!</div>
-                  <button onClick={closeModal} className="button text">close</button>
+                  <div className="container padding"> <center><div style={{marginTop:'30%',fontSize:'24px',color:'#3E64FF'}}>You have succesfully registered for the COWIN notifier.</div>
+                  <div style={{marginTop:'5%',fontSize:'20px'}} >Make sure to keep an eye on your slots!</div>
+                  <button onClick={closeModal} style={{backgroundColor: '#3E64FF', borderRadius : '8px', color:'white',padding:'10px 50px',borderColor:'white',fontSize:'18px',marginTop:'8%'}}>Close</button></center>
+                  </div>
                 </Modal> 
                 </div>
             </div>
@@ -233,10 +252,10 @@ const Form = (props) => {
                   style={customStyles}
                   contentLabel="Example Modal" 
                 >
-                  <div className="text">Icon</div> 
-                  <div className="text">You have succesfully registered for *website name*</div>
-                  <div className="text">Keep a lookout for any future alerts on vaccine availibilty</div>
-                  <button onClick={closeModal} className="button text">close</button>
+                  <div className="container padding"> <center><div style={{marginTop:'30%',fontSize:'24px',color:'#3E64FF'}}>You have succesfully registered for the COWIN notifier.</div>
+                  <div style={{marginTop:'5%',fontSize:'20px'}} >Make sure to keep an eye on your slots!</div>
+                  <button onClick={closeModal} style={{backgroundColor: '#3E64FF', borderRadius : '8px', color:'white',padding:'10px 50px',borderColor:'white',fontSize:'18px',marginTop:'8%'}}>Close</button></center>
+                  </div>
                 </Modal> 
                 </div>
               </div>
