@@ -15,55 +15,64 @@ firebase.initializeApp({
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
   measurementId: process.env.REACT_APP_MEASUREMENT_ID,
-}); 
+});
 
 export const auth = firebase.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 export const signInWithGoogle = () => {
-  (auth
-    .signInWithPopup(googleProvider))
-    .then((res) => { 
+  auth
+    .signInWithPopup(googleProvider)
+    .then((res) => {
       cookie.save("key", res.credential.idToken, { path: "/" });
-      console.log("Below key");  
-      console.log("Above header");  
-      const headers = { "Authorization": res.user.uid };
-      fetch("https://cowin-emailer-api.ieeevit.org/get", { headers }).then((response) =>{
-      console.log("Below header");  
-      const data = response.json();
-        return data;
-      })
-      .then((data)=>{  console.log(data,"idhar");
-        if(!data.user_exists)
-        {
-          const requestOptions = {
-            method: 'POST',
-            headers: { "Authorization": res.user.uid },
-            body:JSON.stringify({
-              uid:res.user.uid,
-              email: res.user.email,
-            })
-        }; 
-          fetch(" https://cowin-emailer-api.ieeevit.org/register",requestOptions ).then((response) =>{
-            const data = response.json();
-            return data;
-          })
-          .then((data)=>{console.log(data)})
-        }})
+      console.log("Below key");
+      console.log("Above header");
+      const headers = { Authorization: res.user.uid };
+      fetch("https://cowin-emailer-api.ieeevit.org/get", { headers })
+        .then((response) => {
+          console.log("Below header");
+          const data = response.json();
+          return data;
+        })
+        .then((data) => {
+          console.log(data, "idhar");
+          if (!data.user_exists) {
+            const requestOptions = {
+              method: "POST",
+              headers: { Authorization: res.user.uid },
+              body: JSON.stringify({
+                uid: res.user.uid,
+                email: res.user.email,
+              }),
+            };
+            fetch(
+              " https://cowin-emailer-api.ieeevit.org/register",
+              requestOptions
+            )
+              .then((response) => {
+                const data = response.json();
+                return data;
+              })
+              .then((data) => {
+                console.log(data);
+                window.location.href = "/dashboard";
+              });
+          } else {
+            window.location.href = "/dashboard";
+          }
+        })
         .catch((error) => {
           console.log(error.message);
         });
       cookie.save("firebaseUid", res.user.uid, { path: "/" });
-      window.location.href = "/dashboard";
       console.log(res);
     })
     .catch((error) => {
       console.log(error.message);
     });
-}
+};
 
 export const logOut = () => {
   cookie.remove("key");
   window.location.reload();
-}
-
+};
