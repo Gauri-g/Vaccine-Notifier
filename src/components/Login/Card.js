@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "./Card.css";
 
-const Card = () => {
+const Card = ({ title, description, link }) => {
   return (
     <>
       {/* <div className="card" > */}

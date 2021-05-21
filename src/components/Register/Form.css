@@ -8,10 +8,11 @@
   display: inline-block;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 1rem;
 }
 
-.padding{
+.padding {
   padding: 1rem;
 }
 
@@ -20,32 +21,29 @@
   justify-content: flex-start;
   letter-spacing: 1.5px;
 }
- 
-.modalHeading
-{
-  margin-top:'30%';
-  font-size:'24px';
-  color:'#3E64FF';
+
+.modalHeading {
+  margin-top: "30%";
+  font-size: "24px";
+  color: "#3E64FF";
 }
-.modalHeading2
-{
-  margin-top:'5%';
-  font-size:'20px'; 
+.modalHeading2 {
+  margin-top: "5%";
+  font-size: "20px";
 }
-.modalbtn
-{
-    background-color: '#3E64FF';
-    border-radius : '8px';
-    color:'white';
-    padding:'10px 50px';
-    border-color:'white';
-    font-size:'18px';
-    margin-top:'8%';
+.modalbtn {
+  background-color: "#3E64FF";
+  border-radius: "8px";
+  color: "white";
+  padding: "10px 50px";
+  border-color: "white";
+  font-size: "18px";
+  margin-top: "8%";
 }
 
-.radiobtn{
-  width:14px;
-  height:14px;  
+.radiobtn {
+  width: 14px;
+  height: 14px;
   background: transparent;
   color: white;
 }
@@ -53,55 +51,55 @@
 .row {
   display: flex;
   justify-content: space-between;
-} 
+}
 
 .save {
   display: block;
-  margin: 0 auto; 
+  margin: 0 auto;
   height: 3rem;
   border: transparent;
   background: white;
   border-radius: 8px;
-  color: #3E64FF; 
-  padding:0.75rem 1.5rem;
+  color: #3e64ff;
+  padding: 0.75rem 1.5rem;
   align-content: center;
   font-family: Montserrat;
   margin-top: 4rem;
   font-weight: 500;
 }
 
-.savebutton{
-    margin-top: 14rem;
+.savebutton {
+  margin-top: 14rem;
 }
 
 @media screen and (min-width: 786px) {
-.location {
-  display: flex;
-  justify-content: flex-end;
-}
+  .location {
+    display: flex;
+    justify-content: flex-end;
+  }
 
-.modal{
-  border-radius: 8px;
-}
+  .modal {
+    border-radius: 8px;
+  }
 
-.text {
-  display: flex;
-  justify-content: flex-start;
-  letter-spacing: 1.5px;
-}
-.radio {
-  display: inline-block;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
+  .text {
+    display: flex;
+    justify-content: flex-start;
+    letter-spacing: 1.5px;
+  }
+  .radio {
+    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
 }
 
 @media screen and (max-width: 786px) {
   .location {
     display: flex;
     justify-content: center;
-    margin-top: 20%!important;
+    margin-top: 20% !important;
   }
 
   .text {
@@ -112,8 +110,8 @@
 
   .radio {
     display: inline-block;
-    display: flex; 
+    display: flex;
     justify-content: space-between;
     margin-top: 1rem;
   }
-  }
+}

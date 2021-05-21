@@ -1,15 +1,19 @@
+import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import Logo from "../../assets/logo.png";
 import "./UserNavbar.css";
 import { logOut } from "../../services/firebase";
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"
+></script>;
 
 const UserNavbar = () => {
   return (
     <nav className="navbar navbar-expand-md navbar-dark ">
       <a className="navbar-brand" href="/#">
-        Icon
+        <img src={Logo} alt="vaccine" />
       </a>
 
       <button
@@ -34,7 +38,9 @@ const UserNavbar = () => {
             </a>
           </li>
           <li className="nav-item">
-            <button className="logout-button nav-link" onClick={logOut}>Log Out</button>
+            <button className="logout-button nav-link" onClick={logOut}>
+              Log Out
+            </button>
           </li>
         </ul>
       </div>
