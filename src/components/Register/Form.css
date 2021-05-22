@@ -5,6 +5,8 @@
 }
 
 .radio {
+  text-align: center;
+  width: 50%;
   display: inline-block;
   display: flex;
   justify-content: space-between;
@@ -22,15 +24,42 @@
   letter-spacing: 1.5px;
 }
 
-.modalHeading {
-  margin-top: "30%";
+.modal-container {
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.modal-header {
+  display: flex;
+}
+
+.modal-header-title {
   font-size: "24px";
-  color: "#3E64FF";
+  color: white;
 }
-.modalHeading2 {
-  margin-top: "5%";
-  font-size: "20px";
+
+.modal-body {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.modal-body-success {
+  margin-top: 5px;
+  color: #3e64ff;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.modal-body-lookout {
+  margin-top: 5px;
+  color: #6c6c6c;
+  font-size: 16px;
+  font-weight: 400;
+}
+
 .modalbtn {
   background-color: "#3E64FF";
   border-radius: "8px";
@@ -64,32 +93,30 @@
   padding: 0.75rem 1.5rem;
   align-content: center;
   font-family: Montserrat;
-  margin-top: 4rem;
+  margin-top: 3rem;
   font-weight: 500;
 }
 
-@media screen and (min-width: 786px) {
-  .location {
-    display: flex;
-    justify-content: flex-end;
-  }
+.location {
+  display: flex;
+  justify-content: flex-end;
+}
 
-  .modal {
-    border-radius: 8px;
-  }
+.modal {
+  border-radius: 8px;
+}
 
-  .text {
-    display: flex;
-    justify-content: flex-start;
-    letter-spacing: 1.5px;
-  }
-  
-  .radio {
-    display: inline-block;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-  }
+.text {
+  display: flex;
+  justify-content: flex-start;
+  letter-spacing: 1.5px;
+}
+
+.radio {
+  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 
 @media (max-width: 340px) {
@@ -102,7 +129,9 @@
   }
 
   .save {
-    margin-top: 20px;
+    margin-top: 1rem;
+    padding: 0.1rem 0.75rem;
+    font-size: 16px;
   }
 }
 
@@ -124,5 +153,10 @@
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
+    width: 60%;
+  }
+
+  .modal-header {
+    flex-direction: column;
   }
 }

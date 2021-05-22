@@ -4,15 +4,14 @@ import "./Form.css";
 import Modal from "react-modal";
 import Select from "react-select";
 import ErrorModal from "./ErrorModal";
-import image from "../../background/bg3.svg";
 import axios from "axios";
 import { list } from "./cities";
+import doctors from "../../assets/doctors.png";
 import "firebase/firestore";
 require("firebase/auth");
 
 const Form = (props) => {
   const [edit, setEdit] = useState(false);
-  const [selectedOption, setselectedOption] = useState(props.age || 0);
   const [district, setDistrict] = useState("");
   const [age, setAge] = useState(0);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -23,41 +22,35 @@ const Form = (props) => {
     window.location.reload();
   }
 
-  const customStyles = {
+  const modalStyles = {
     content: {
+      borderRadius: "10px",
+      backgroundColor: "#3e64ff",
+      padding: "0",
       top: "50%",
       left: "50%",
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      borderRadius: "8px",
-      backgroundImage: "url(" + image + ")",
-      backgroundSize: "contain",
-      backgroundRepeat: "no-repeat",
-    },
-    overlay: {
-      position: "fixed",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: "rgba(128, 128, 128, 0.9)",
     },
   };
 
-//   useEffect(() => {
-//     setDistrict(props.district);
-//     setAge(props.age);
-//     if (district !== "" && edit === false) {
-//       setselectedOption(Number(age));
-//     }
-//   }, [age, edit, district, props.age, props.district, show]);
+  //   useEffect(() => {
+  //     setDistrict(props.district);
+  //     setAge(props.age);
+  //     if (district !== "" && edit === false) {
+  //       setselectedOption(Number(age));
+  //     }
+  //   }, [age, edit, district, props.age, props.district, show]);
 
   const submitHandler = () => {
     const uid = cookie.load("key");
-	console.log(district);
-	console.log(age);
+    if (district === "") {
+      return window.alert("Kindly enter district.");
+    }
+    console.log(district);
+    console.log(age);
     const body = {
       district,
       age: Number(age),
@@ -65,15 +58,16 @@ const Form = (props) => {
     console.log(body);
     const headers = { Authorization: uid };
     axios
-      .patch(`${process.env.REACT_APP_BACKEND_URL}/update`, body, { headers })
+      .put(`${process.env.REACT_APP_BACKEND_URL}/update`, body, { headers })
       .then((response) => {
         console.log(response);
+        setIsOpen(true);
       })
       .catch((error) => {
         console.log(error.message);
         setShow(true);
       });
-  }
+  };
 
   const Editcall = () => {
     setEdit(true);
@@ -133,18 +127,71 @@ const Form = (props) => {
   return (
     <>
       <div className="container">
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={modalStyles}
+          ariaHideApp={false}
+          contentLabel="Example Modal"
+        >
+          <div className="modal-container">
+            <div className="modal-header">
+              <p className="modal-header-title">Covid-19 Vaccination</p>
+              <img
+                src={doctors}
+                alt="covid19vacination"
+                width="188px"
+                height="164px"
+              />
+            </div>
+            <div className="modal-body">
+              <p className="modal-body-success">
+                You have succesfully registered for the COWIN notifier.
+              </p>
+              <p className="modal-body-lookout">
+                Keep a lookout for any future alerts on vaccine availibilty
+              </p>
+              <button
+                onClick={closeModal}
+                style={{
+                  backgroundColor: "#3E64FF",
+                  borderRadius: "8px",
+                  color: "white",
+                  padding: "10px 50px",
+                  borderColor: "white",
+                  fontSize: "18px",
+                  marginTop: "8%",
+                }}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </Modal>
         <div className="row">
           <div className="col-lg-6 col-xs-12 col-md-6">
-            <div className="text">
-              <h6>AGE GROUP</h6>
-            </div>
+            <h6 className="text">AGE GROUP</h6>
             <div className="radio" onChange={selectData}>
-              <input className="radiobtn" type="radio" value="0" name="data" />
-              {"All"}
-              <input className="radiobtn" type="radio" value="18" name="data" />
-              {"18-45"}
-              <input className="radiobtn" type="radio" value="45" name="data" />
-              {"45"}
+              {/* <input className="radiobtn" type="radio" value="0" name="data" />
+              {"All"} */}
+              <div>
+                <input
+                  className="radiobtn"
+                  type="radio"
+                  value="18"
+                  name="data"
+                />
+                {"18-45"}
+              </div>
+              <div>
+                <input
+                  className="radiobtn"
+                  type="radio"
+                  value="45"
+                  name="data"
+                />
+                {"45"}
+              </div>
             </div>
           </div>
           <div className="location col-lg-6 col-xs-12 col-md-6">
@@ -164,49 +211,6 @@ const Form = (props) => {
         <button onClick={submitHandler} className="save">
           Save details
         </button>
-        <div>
-          <div className="container">
-            <Modal
-              isOpen={modalIsOpen}
-              onRequestClose={closeModal}
-              style={customStyles}
-              ariaHideApp={false}
-              contentLabel="Example Modal"
-            >
-              <div className="container padding">
-                {" "}
-                <center>
-                  <div
-                    style={{
-                      marginTop: "30%",
-                      fontSize: "24px",
-                      color: "#3E64FF",
-                    }}
-                  >
-                    You have succesfully registered for the COWIN notifier.
-                  </div>
-                  <div style={{ marginTop: "5%", fontSize: "20px" }}>
-                    Make sure to keep an eye on your slots!
-                  </div>
-                  <button
-                    onClick={closeModal}
-                    style={{
-                      backgroundColor: "#3E64FF",
-                      borderRadius: "8px",
-                      color: "white",
-                      padding: "10px 50px",
-                      borderColor: "white",
-                      fontSize: "18px",
-                      marginTop: "8%",
-                    }}
-                  >
-                    Close
-                  </button>
-                </center>
-              </div>
-            </Modal>
-          </div>
-        </div>
       </div>
     </>
   );
