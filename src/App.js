@@ -13,7 +13,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/" component={Login} exact />
-          <ProtectedRoute path="/dashboard" redirect="/" component={Dashboard} /> 
+          <ProtectedRoute path="/home" redirect="/" component={Dashboard} />
         </Switch>
       </div>
     </Router>

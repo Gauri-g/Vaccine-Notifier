@@ -62,7 +62,6 @@ export default function Dashboard() {
       district,
       age: Number(age),
     };
-    console.log(body);
     const headers = { Authorization: uid };
     axios
       .put(`${process.env.REACT_APP_BACKEND_URL}/update`, body, { headers })
