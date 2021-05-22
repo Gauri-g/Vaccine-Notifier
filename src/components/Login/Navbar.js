@@ -1,14 +1,18 @@
+import React from 'react';
+import Logo from '../../assets/logo.png';
 import "bootstrap/dist/css/bootstrap.css";
 import "./Navbar.css";
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"
+></script>;
 
 const Navbar = () => {
   return (
     <nav className="navbar padding0 navbar-expand-md navbar-dark">
       <a className="navbar-brand" href="/#">
-        Icon
+        <img src={Logo} alt='vaccine' />
       </a>
 
       <button

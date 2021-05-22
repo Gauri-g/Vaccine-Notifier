@@ -1,43 +1,41 @@
-.tt {
+.loading {
+  background-image: url("./assets/home.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
-  font-family: Montserrat;
-  margin-top: 1.5em;
+  align-items: center;
 }
 
-.name{
-  display: flex;
-  justify-content: center;
+.bg2 {
+  background-image: url("./assets/home.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  width: 100%;
+  height: 100vh;
+}
+
+.name {
+  margin-bottom: 0;
+  font-size: 32px;
+  text-align: center;
   font-family: Montserrat;
+  font-weight: 700;
   font-style: normal;
-  font-weight: 500;
-  line-height: 44px;
   letter-spacing: 0.25px;
-  text-align: left;
-  margin-top: 15%;
 }
 
-.maild
-{ 
-  display: flex;
-  justify-content: center;
-  font-family: Montserrat; 
-  line-height: 44px;
+.maild {
+  text-align: center;
+  font-family: Montserrat;
   letter-spacing: 0.25px;
-  font-weight: lighter;
-  margin-top:5%;
 }
 
-
-.bg2{
-  background-image:url("./background/bg.svg");
-  background-size: contain;
-  color: white; 
-  width:100%; 
-}
-
-.white{
-   color: white;
+.white {
+  color: white;
 }
 
 .bug {
@@ -45,26 +43,50 @@
   justify-content: center;
 }
 
-@media screen and (min-width: 786px) {
-  .form {
-    margin-top: 5%;
-  }
-  .name{
-	margin-top: 25%;
-  }
-  .margintop{
-	  margin-top: 10%;
-  }
+.form {
+  margin-top: 5%;
+}
+
+.name {
+  margin-top: 20%;
+}
+
+.margintop {
+  margin-top: 10%;
 }
 
 @media screen and (max-width: 786px) {
+  .name {
+    font-size: 18px;
+  }
+  .maild {
+    font-size: 16px;
+  }
   .form {
-    margin-top: 20%;
+    margin-top: 5%;
   }
   .name {
-    margin-top: 35%;
+    margin-top: 5%;
   }
-  .margintop{
-	  margin-top: 20%;
+  .margintop {
+    margin-top: 5%;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .name {
+    font-size: 16px;
+  }
+  .maild {
+    font-size: 12px;
+  }
+  .form {
+    margin-top: 0;
+  }
+  .name {
+    margin-top: 0;
+  }
+  .margintop {
+    margin-top: 0;
   }
 }

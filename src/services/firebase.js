@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import firebase from "firebase/app";
 import cookie from "react-cookies";
+import axios from "axios";
 import "firebase/firestore";
 require("firebase/auth");
 
@@ -24,53 +25,74 @@ export const signInWithGoogle = () => {
   auth
     .signInWithPopup(googleProvider)
     .then((res) => {
-      cookie.save("key", res.credential.idToken, { path: "/" });
-      console.log("Below key");
+      cookie.save("key", res.user.uid, { path: "/" });
+      console.log("Below key", res.user.uid);
       console.log("Above header");
       const headers = { Authorization: res.user.uid };
-      fetch("https://cowin-emailer-api.ieeevit.org/get", { headers })
+      axios
+        .get(`${process.env.REACT_APP_BACKEND_URL}/get`, { headers })
         .then((response) => {
           console.log("Below header");
-          const data = response.json();
+          console.log(response.data);
+          const data = response.data;
           return data;
         })
         .then((data) => {
           console.log(data, "idhar");
           if (!data.user_exists) {
-            const requestOptions = {
-              method: "POST",
-              headers: { Authorization: res.user.uid },
-              body: JSON.stringify({
-                uid: res.user.uid,
-                email: res.user.email,
-              }),
-            };
-            fetch(
-              " https://cowin-emailer-api.ieeevit.org/register",
-              requestOptions
-            )
+            console.log("user does not exist");
+            axios
+              .post(
+                `${process.env.REACT_APP_BACKEND_URL}/register`,
+                {
+                  uid: res.user.uid,
+                  email: res.user.email,
+                },
+                {
+                  headers: {
+                    Authorization: res.user.uid,
+                  },
+                }
+              )
               .then((response) => {
-                const data = response.json();
-                return data;
+                console.log(response);
+                // window.location.href = "/dashboard";
               })
-              .then((data) => {
-                console.log(data);
-                window.location.href = "/dashboard";
+              .catch((e) => {
+                console.log(e);
+                alert("Something went wrong. Please try again.");
               });
           } else {
+            console.log("user existss");
             window.location.href = "/dashboard";
           }
         })
         .catch((error) => {
           console.log(error.message);
+          alert("Something went wrong while logging in. Please try again.");
         });
-      cookie.save("firebaseUid", res.user.uid, { path: "/" });
-      console.log(res);
     })
     .catch((error) => {
       console.log(error.message);
+      alert(
+        "Something went wrong accessing your google account. Please try again."
+      );
     });
 };
+
+// export const getUid = (uid) => {
+//   firebase
+//     .auth()
+//     .verifyIdToken(idToken)
+//     .then((decodedToken) => {
+//       const uid = decodedToken.uid;
+//       return uid;
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//       return null;
+//     });
+// };
 
 export const logOut = () => {
   cookie.remove("key");
