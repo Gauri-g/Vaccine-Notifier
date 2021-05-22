@@ -68,10 +68,6 @@
   font-weight: 500;
 }
 
-.savebutton {
-  margin-top: 14rem;
-}
-
 @media screen and (min-width: 786px) {
   .location {
     display: flex;
@@ -87,6 +83,7 @@
     justify-content: flex-start;
     letter-spacing: 1.5px;
   }
+  
   .radio {
     display: inline-block;
     display: flex;
@@ -95,11 +92,25 @@
   }
 }
 
+@media (max-width: 340px) {
+  .location {
+    margin-top: 20px;
+  }
+
+  .radio {
+    margin-top: 0;
+  }
+
+  .save {
+    margin-top: 20px;
+  }
+}
+
 @media screen and (max-width: 786px) {
   .location {
     display: flex;
     justify-content: center;
-    margin-top: 20% !important;
+    margin-top: 20%;
   }
 
   .text {

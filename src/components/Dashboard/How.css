@@ -28,9 +28,13 @@
   .hows {
     margin-top: 25%;
   }
+  .card-title {
+	  font-size: 16px;
+  }
 }
-@media screen and (min-width: 786px) {
+
+@media screen and (max-width: 340px) {
   .hows {
-    margin-top: 15%;
+    margin-top: 5%;
   }
 }

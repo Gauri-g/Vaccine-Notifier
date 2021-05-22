@@ -46,12 +46,24 @@
 
 @media screen and (max-width: 786px) {
   .form {
-    margin-top: 10%;
+    margin-top: 5%;
   }
   .name {
-    margin-top: 15%;
+    margin-top: 5%;
   }
   .margintop {
-    margin-top: 10%;
+    margin-top: 5%;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .form {
+    margin-top: 0;
+  }
+  .name {
+    margin-top: 0;
+  }
+  .margintop {
+    margin-top: 0;
   }
 }
