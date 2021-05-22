@@ -120,60 +120,57 @@ const Form = (props) => {
       width: "15rem",
       marginTop: "0rem",
       marginLeft: "0rem",
-      color: "black",
     }),
   };
 
   return (
     <>
-      <div className="container">
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          style={modalStyles}
-          ariaHideApp={false}
-          contentLabel="Example Modal"
-        >
-          <div className="modal-container">
-            <div className="modal-header">
-              <p className="modal-header-title">Covid-19 Vaccination</p>
-              <img
-                src={doctors}
-                alt="covid19vacination"
-                width="188px"
-                height="164px"
-              />
-            </div>
-            <div className="modal-body">
-              <p className="modal-body-success">
-                You have succesfully registered for the COWIN notifier.
-              </p>
-              <p className="modal-body-lookout">
-                Keep a lookout for any future alerts on vaccine availibilty
-              </p>
-              <button
-                onClick={closeModal}
-                style={{
-                  backgroundColor: "#3E64FF",
-                  borderRadius: "8px",
-                  color: "white",
-                  padding: "10px 50px",
-                  borderColor: "white",
-                  fontSize: "18px",
-                  marginTop: "8%",
-                }}
-              >
-                Close
-              </button>
-            </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={modalStyles}
+        ariaHideApp={false}
+        contentLabel="Example Modal"
+      >
+        <div className="modal-container">
+          <div className="modal-header">
+            <p className="modal-header-title">Covid-19 Vaccination</p>
+            <img
+              src={doctors}
+              alt="covid19vacination"
+              width="188px"
+              height="164px"
+            />
           </div>
-        </Modal>
-        <div className="row">
-          <div className="col-lg-6 col-xs-12 col-md-6">
+          <div className="modal-body">
+            <p className="modal-body-success">
+              You have succesfully registered for the COWIN notifier.
+            </p>
+            <p className="modal-body-lookout">
+              Keep a lookout for any future alerts on vaccine availibilty
+            </p>
+            <button
+              onClick={closeModal}
+              style={{
+                backgroundColor: "#3E64FF",
+                borderRadius: "8px",
+                color: "white",
+                padding: "10px 50px",
+                borderColor: "white",
+                fontSize: "18px",
+                marginTop: "8%",
+              }}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </Modal>
+      <div className="form-container">
+        <div className="container-row">
+          <div className="container-row-column">
             <h6 className="text">AGE GROUP</h6>
             <div className="radio" onChange={selectData}>
-              {/* <input className="radiobtn" type="radio" value="0" name="data" />
-              {"All"} */}
               <div>
                 <input
                   className="radiobtn"
@@ -181,7 +178,7 @@ const Form = (props) => {
                   value="18"
                   name="data"
                 />
-                {"18-45"}
+                {"  18-45"}
               </div>
               <div>
                 <input
@@ -190,22 +187,18 @@ const Form = (props) => {
                   value="45"
                   name="data"
                 />
-                {"45"}
+                {"  45"}
               </div>
             </div>
           </div>
-          <div className="location col-lg-6 col-xs-12 col-md-6">
-            <div>
-              <div className="text">
-                <h6>LOCATION</h6>
-              </div>
-              <Select
-                placeholder="Ex: Mumbai"
-                options={cityOptions}
-                onChange={industryChangeHandler}
-                styles={colourStyles}
-              />
-            </div>
+          <div className="container-row-column">
+            <h6 className="text">LOCATION</h6>
+            <Select
+              placeholder="Ex: Mumbai"
+              options={cityOptions}
+              onChange={industryChangeHandler}
+              styles={colourStyles}
+            />
           </div>
         </div>
         <button onClick={submitHandler} className="save">
