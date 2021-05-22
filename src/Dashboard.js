@@ -2,19 +2,21 @@ import React, { useEffect, useState } from "react";
 import cookie from "react-cookies";
 import UserNavbar from "./components/Dashboard/UserNavbar.js";
 import How from "./components/Dashboard/How";
-import Card from "./components/Login/Card";
 import Form from "./components/Register/Form";
 import * as typeformEmbed from "@typeform/embed";
+import ReactLoading from "react-loading";
 // import { getUid } from "./services/firebase";
 
 import axios from "axios";
 
 import "./Dashboard.css";
+import Resources from "./components/Resources/Resources.jsx";
 
 export default function Dashboard() {
   const [district, setDistrict] = useState("");
   const [age, setAge] = useState(0);
   const [mail, setMail] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getUserDetails();
@@ -40,6 +42,7 @@ export default function Dashboard() {
           setDistrict(data.district);
           setAge(data.age);
         }
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error.message);
@@ -59,6 +62,16 @@ export default function Dashboard() {
     }
   );
 
+  if (loading) {
+    return (
+      <div className="loading">
+        <ReactLoading
+          type={"spinningBubbles"}
+          color={"#ffffff"}
+        />
+      </div>
+    );
+  }
   return (
     <>
       <UserNavbar />
@@ -91,18 +104,7 @@ export default function Dashboard() {
             </center>
           </h6>
         </div>
-        <div className="row">
-          <Card />
-          <Card />
-        </div>
-        <div className="row">
-          <Card />
-          <Card />
-        </div>
-        <div className="row">
-          <Card />
-          <Card />
-        </div>
+        <Resources />
       </div>
     </>
   );

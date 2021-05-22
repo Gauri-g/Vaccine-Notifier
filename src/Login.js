@@ -4,7 +4,7 @@ import "./Login.css";
 import GButton from "./components/Login/GButton";
 import Navbar from "./components/Login/Navbar";
 import How from "./components/Login/How";
-import Card from "./components/Login/Card";
+import Resources from "./components/Resources/Resources";
 
 export default function Login() {
   return (
@@ -43,18 +43,7 @@ export default function Login() {
             </center>
           </h6>
         </div>
-        <div className="row ">
-          <Card />
-          <Card />
-        </div>
-        <div className="row">
-          <Card />
-          <Card />
-        </div>
-        <div className="row">
-          <Card />
-          <Card />
-        </div>
+        <Resources />
       </div>
     </>
   );
