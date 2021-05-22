@@ -4,6 +4,7 @@ import UserNavbar from "./components/Dashboard/UserNavbar.js";
 import How from "./components/Dashboard/How";
 import Card from "./components/Login/Card";
 import Form from "./components/Register/Form";
+import * as typeformEmbed from "@typeform/embed";
 // import { getUid } from "./services/firebase";
 
 import axios from "axios";
@@ -31,10 +32,10 @@ export default function Dashboard() {
       .then((response) => {
         console.log(response, "hereeee");
         if (!response.data.user_exists) {
-            return (window.location.href = "/");
+          return (window.location.href = "/");
         } else if (response.data.data.age !== 0) {
           let data = response.data.data;
-		  console.log(data);
+          console.log(data);
           setMail(data.email);
           setDistrict(data.district);
           setAge(data.age);
@@ -46,17 +47,25 @@ export default function Dashboard() {
       });
   };
 
+  const popup = typeformEmbed.createPopup(
+    "https://form.typeform.com/to/a1928yCA",
+    {
+      autoClose: 3000,
+      hideHeaders: true,
+      hideFooter: true,
+      onSubmit: () => {
+        console.log("submitted typeform");
+      },
+    }
+  );
+
   return (
     <>
       <UserNavbar />
       <div className="bg2">
         <div className="container col-lg-6 col-xs-12 col-md-6 ">
-          <div className="name">
-            <h3>Fill in your details here!</h3>
-          </div>
-          <div className="maild">
-            <h5>{mail} is here</h5>
-          </div>
+          <p className="name">CoWIN Notifier</p>
+          <h5 className="maild">{mail}</h5>
           <div className="form">
             <Form district={district} age={age} />
           </div>
@@ -64,8 +73,9 @@ export default function Dashboard() {
             <How />
           </div>
           <div className="bug">
-            <button className="privacy white">Report a bug</button>
-            <button className="privacy white">Privacy Policy</button>
+            <button className="privacy white" onClick={() => popup.open()}>
+              Report a bug
+            </button>
           </div>
         </div>
       </div>

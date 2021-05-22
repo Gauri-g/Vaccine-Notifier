@@ -17,9 +17,6 @@ const Form = (props) => {
   const [age, setAge] = useState(0);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [show, setShow] = useState(false);
-  function openModal() {
-    setIsOpen(true);
-  }
 
   function closeModal() {
     setIsOpen(false);
@@ -49,20 +46,23 @@ const Form = (props) => {
     },
   };
 
-  useEffect(() => {
-    setDistrict(props.district);
-    setAge(props.age);
-    if (district !== "" && edit === false) {
-      setselectedOption(Number(age));
-    }
-  }, [age, edit, district, props.age, props.district, show]);
+//   useEffect(() => {
+//     setDistrict(props.district);
+//     setAge(props.age);
+//     if (district !== "" && edit === false) {
+//       setselectedOption(Number(age));
+//     }
+//   }, [age, edit, district, props.age, props.district, show]);
 
-  function submitHandler() {
+  const submitHandler = () => {
     const uid = cookie.load("key");
+	console.log(district);
+	console.log(age);
     const body = {
       district,
       age: Number(age),
     };
+    console.log(body);
     const headers = { Authorization: uid };
     axios
       .patch(`${process.env.REACT_APP_BACKEND_URL}/update`, body, { headers })
@@ -161,10 +161,10 @@ const Form = (props) => {
             </div>
           </div>
         </div>
+        <button onClick={submitHandler} className="save">
+          Save details
+        </button>
         <div>
-          <button onClick={submitHandler} className="save">
-            Save details
-          </button>
           <div className="container">
             <Modal
               isOpen={modalIsOpen}
