@@ -1,22 +1,23 @@
-import { useEffect, useState } from "react";
-import cookie from "react-cookies";
+import React from "react";
 import "./Form.css";
 import Modal from "react-modal";
 import Select from "react-select";
-import ErrorModal from "./ErrorModal";
-import axios from "axios";
 import { list } from "./cities";
 import doctors from "../../assets/doctors.png";
 import "firebase/firestore";
 require("firebase/auth");
 
-const Form = (props) => {
-  const [edit, setEdit] = useState(false);
-  const [district, setDistrict] = useState("");
-  const [age, setAge] = useState(0);
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [show, setShow] = useState(false);
-
+const Form = ({
+  district,
+  age,
+  setDistrict,
+  setAge,
+  modalIsOpen,
+  setIsOpen,
+  submitHandler,
+  edit,
+  setEdit
+}) => {
   function closeModal() {
     setIsOpen(false);
     window.location.reload();
@@ -43,40 +44,6 @@ const Form = (props) => {
   //       setselectedOption(Number(age));
   //     }
   //   }, [age, edit, district, props.age, props.district, show]);
-
-  const submitHandler = () => {
-    const uid = cookie.load("key");
-    if (district === "") {
-      return window.alert("Kindly enter district.");
-    }
-    console.log(district);
-    console.log(age);
-    const body = {
-      district,
-      age: Number(age),
-    };
-    console.log(body);
-    const headers = { Authorization: uid };
-    axios
-      .put(`${process.env.REACT_APP_BACKEND_URL}/update`, body, { headers })
-      .then((response) => {
-        console.log(response);
-        setIsOpen(true);
-      })
-      .catch((error) => {
-        console.log(error.message);
-        setShow(true);
-      });
-  };
-
-  const Editcall = () => {
-    setEdit(true);
-  };
-
-  if (show === true) {
-    console.log("yahah hu mein");
-    return <ErrorModal />;
-  }
 
   const selectData = (event) => {
     setAge(event.target.value);
@@ -170,39 +137,47 @@ const Form = (props) => {
         <div className="container-row">
           <div className="container-row-column">
             <h6 className="text">AGE GROUP</h6>
-            <div className="radio" onChange={selectData}>
-              <div>
-                <input
-                  className="radiobtn"
-                  type="radio"
-                  value="18"
-                  name="data"
-                />
-                {"  18-45"}
+            {edit ? (
+              <div className="radio" onChange={selectData}>
+                <div>
+                  <input
+                    className="radiobtn"
+                    type="radio"
+                    value="18"
+                    name="data"
+                  />
+                  {"  18-45"}
+                </div>
+                <div>
+                  <input
+                    className="radiobtn"
+                    type="radio"
+                    value="45"
+                    name="data"
+                  />
+                  {"  45"}
+                </div>
               </div>
-              <div>
-                <input
-                  className="radiobtn"
-                  type="radio"
-                  value="45"
-                  name="data"
-                />
-                {"  45"}
-              </div>
-            </div>
+            ) : (
+              <p>{age === 18 ? "18-45" : "45"}</p>
+            )}
           </div>
           <div className="container-row-column">
             <h6 className="text">LOCATION</h6>
-            <Select
-              placeholder="Ex: Mumbai"
-              options={cityOptions}
-              onChange={industryChangeHandler}
-              styles={colourStyles}
-            />
+            {edit ? (
+              <Select
+                placeholder="Ex: Mumbai"
+                options={cityOptions}
+                onChange={industryChangeHandler}
+                styles={colourStyles}
+              />
+            ) : (
+              <p>{district}</p>
+            )}
           </div>
         </div>
-        <button onClick={submitHandler} className="save">
-          Save details
+        <button onClick={edit ? submitHandler : setEdit} className="save">
+          {edit ? "Save" : "Edit"} details
         </button>
       </div>
     </>

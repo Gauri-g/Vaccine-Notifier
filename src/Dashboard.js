@@ -3,20 +3,23 @@ import cookie from "react-cookies";
 import UserNavbar from "./components/Dashboard/UserNavbar.js";
 import How from "./components/Dashboard/How";
 import Form from "./components/Register/Form";
-import * as typeformEmbed from "@typeform/embed";
+import Resources from "./components/Resources/Resources.jsx";
 import ReactLoading from "react-loading";
+// import { createPopup } from "@typeform/embed";
+// import "@typeform/embed/build/css/widget.css";
 // import { getUid } from "./services/firebase";
 
 import axios from "axios";
 
 import "./Dashboard.css";
-import Resources from "./components/Resources/Resources.jsx";
 
 export default function Dashboard() {
   const [district, setDistrict] = useState("");
   const [age, setAge] = useState(0);
   const [mail, setMail] = useState("");
+  const [modalIsOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [edit, setEdit] = useState(false);
 
   useEffect(() => {
     getUserDetails();
@@ -41,6 +44,9 @@ export default function Dashboard() {
           setMail(data.email);
           setDistrict(data.district);
           setAge(data.age);
+        } else {
+          console.log("set edit true");
+          setEdit(true);
         }
         setLoading(false);
       })
@@ -50,25 +56,35 @@ export default function Dashboard() {
       });
   };
 
-  const popup = typeformEmbed.createPopup(
-    "https://form.typeform.com/to/a1928yCA",
-    {
-      autoClose: 3000,
-      hideHeaders: true,
-      hideFooter: true,
-      onSubmit: () => {
-        console.log("submitted typeform");
-      },
+  const submitHandler = () => {
+    const uid = cookie.load("key");
+    if (district === "") {
+      return window.alert("Kindly enter district.");
     }
-  );
+    console.log(district);
+    console.log(age);
+    const body = {
+      district,
+      age: Number(age),
+    };
+    console.log(body);
+    const headers = { Authorization: uid };
+    axios
+      .put(`${process.env.REACT_APP_BACKEND_URL}/update`, body, { headers })
+      .then((response) => {
+        console.log(response);
+        setIsOpen(true);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        // setShow(true);
+      });
+  };
 
   if (loading) {
     return (
       <div className="loading">
-        <ReactLoading
-          type={"spinningBubbles"}
-          color={"#ffffff"}
-        />
+        <ReactLoading type={"spinningBubbles"} color={"#ffffff"} />
       </div>
     );
   }
@@ -80,15 +96,25 @@ export default function Dashboard() {
           <p className="name">CoWIN Notifier</p>
           <h5 className="maild">{mail}</h5>
           <div className="form">
-            <Form district={district} age={age} />
+            <Form
+              district={district}
+              age={age}
+              setDistrict={setDistrict}
+              setAge={setAge}
+              modalIsOpen={modalIsOpen}
+              setIsOpen={setIsOpen}
+              submitHandler={submitHandler}
+              edit={edit}
+              setEdit={setEdit}
+            />
           </div>
           <div>
             <How />
           </div>
           <div className="bug">
-            <button className="privacy white" onClick={() => popup.open()}>
+            <a href="https://9txi4ju6lrd.typeform.com/to/a1928yCA" className="privacy white" id="bt-popup">
               Report a bug
-            </button>
+            </a>
           </div>
         </div>
       </div>
