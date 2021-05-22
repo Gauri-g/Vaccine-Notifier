@@ -5,6 +5,7 @@ import GButton from "./components/Login/GButton";
 import Navbar from "./components/Login/Navbar";
 import How from "./components/Login/How";
 import Resources from "./components/Resources/Resources";
+import Footer from "./components/Footer/Footer.js";
 
 export default function Login() {
   return (
@@ -44,6 +45,7 @@ export default function Login() {
           </h6>
         </div>
         <Resources />
+        <Footer />
       </div>
     </>
   );

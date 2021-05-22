@@ -4,6 +4,7 @@ import UserNavbar from "./components/Dashboard/UserNavbar.js";
 import How from "./components/Dashboard/How";
 import Form from "./components/Register/Form";
 import Resources from "./components/Resources/Resources.jsx";
+import Footer from "./components/Footer/Footer.js";
 import ReactLoading from "react-loading";
 // import { createPopup } from "@typeform/embed";
 // import "@typeform/embed/build/css/widget.css";
@@ -28,24 +29,20 @@ export default function Dashboard() {
   const getUserDetails = async () => {
     const uid = cookie.load("key");
     if (uid === null) {
-      console.log("uid is null");
       //   return (window.location.href = "/");
     }
     const headers = { Authorization: uid };
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/get`, { headers })
       .then((response) => {
-        console.log(response, "hereeee");
         if (!response.data.user_exists) {
           return (window.location.href = "/");
         } else if (response.data.data.age !== 0) {
           let data = response.data.data;
-          console.log(data);
           setMail(data.email);
           setDistrict(data.district);
           setAge(data.age);
         } else {
-          console.log("set edit true");
           setEdit(true);
         }
         setLoading(false);
@@ -61,8 +58,6 @@ export default function Dashboard() {
     if (district === "") {
       return window.alert("Kindly enter district.");
     }
-    console.log(district);
-    console.log(age);
     const body = {
       district,
       age: Number(age),
@@ -72,7 +67,6 @@ export default function Dashboard() {
     axios
       .put(`${process.env.REACT_APP_BACKEND_URL}/update`, body, { headers })
       .then((response) => {
-        console.log(response);
         setIsOpen(true);
       })
       .catch((error) => {
@@ -131,6 +125,7 @@ export default function Dashboard() {
           </h6>
         </div>
         <Resources />
+        <Footer />
       </div>
     </>
   );

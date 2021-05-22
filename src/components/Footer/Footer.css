@@ -1,0 +1,24 @@
+.footer-container {
+    /* border: 2px solid red; */
+}
+
+.social_icons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-icon {
+    margin: 3px 6px 6px 6px;
+}
+
+.policy-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 12px 2px;
+    font-family: Montserrat;
+    text-align: center;
+}

@@ -1,9 +1,9 @@
 import "./ErrorModal.css";
 import {useState} from "react";
-import Modal from 'react-modal'; 
+import Modal from 'react-modal';
 
-const ErrorModal = () => { 
-    
+const ErrorModal = () => {
+
   const customStyles = {
     content : {
       top                   : '50%',
@@ -15,24 +15,23 @@ const ErrorModal = () => {
     }
   };
 
-  const [modalIsOpen,setIsOpen] = useState(true); 
-console.log("I am modal");
+  const [modalIsOpen,setIsOpen] = useState(true);
   function closeModal(){
-    setIsOpen(false); 
+    setIsOpen(false);
   }
     return(
-                <Modal 
+                <Modal
                   isOpen={modalIsOpen}
                   onRequestClose={closeModal}
                   style={customStyles}
                   ariaHideApp={false}
-                  contentLabel="Example Modal" 
+                  contentLabel="Example Modal"
                 >
-                  <div className="text">Icon</div> 
+                  <div className="text">Icon</div>
                   <div className="text">You have succesfully registered for the COWIN notifier.</div>
                   <div className="text">Make sure to keep an eye on your slots!</div>
                   <button onClick={closeModal} className="button text">close</button>
-                </Modal> 
+                </Modal>
     );
 }
 

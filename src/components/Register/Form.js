@@ -54,7 +54,6 @@ const Form = ({
   });
 
   const industryChangeHandler = (value) => {
-    console.log(value.value);
     setDistrict(value.value);
   };
 

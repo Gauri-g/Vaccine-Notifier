@@ -26,19 +26,14 @@ export const signInWithGoogle = () => {
     .signInWithPopup(googleProvider)
     .then((res) => {
       cookie.save("key", res.user.uid, { path: "/" });
-      console.log("Below key", res.user.uid);
-      console.log("Above header");
       const headers = { Authorization: res.user.uid };
       axios
         .get(`${process.env.REACT_APP_BACKEND_URL}/get`, { headers })
         .then((response) => {
-          console.log("Below header");
-          console.log(response.data);
           const data = response.data;
           return data;
         })
         .then((data) => {
-          console.log(data, "idhar");
           if (!data.user_exists) {
             console.log("user does not exist");
             axios
@@ -56,7 +51,7 @@ export const signInWithGoogle = () => {
               )
               .then((response) => {
                 console.log(response);
-                // window.location.href = "/dashboard";
+                window.location.href = "/dashboard";
               })
               .catch((e) => {
                 console.log(e);
