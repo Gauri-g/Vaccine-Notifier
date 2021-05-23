@@ -36,6 +36,7 @@
 
 @media screen and (max-width: 340px) {
   .hows {
-    margin-top: 5%;
+    margin-top: 5px;
+	padding: 0.5em;
   }
 }

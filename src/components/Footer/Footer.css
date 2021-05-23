@@ -1,6 +1,6 @@
 .footer-container {
     /* border: 2px solid red; */
-    margin: 90px 0px 0px 0px;
+    margin: 90px 0px 20px 0px;
 }
 
 .social_icons-container {
@@ -11,7 +11,7 @@
 }
 
 .social-icon {
-    margin: 3px 6px 6px 6px;
+    margin: 3px 8px 6px 8px;
 }
 
 .policy-container {
@@ -19,7 +19,14 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: 12px 2px;
+    margin: 30px 2px;
     font-family: Montserrat;
     text-align: center;
 }
+
+@media screen and (max-width: 786px) {
+  .policy-container {
+	  margin: 30px 10px;
+  }
+}
+

@@ -8,7 +8,7 @@ const Card = ({ title, description, link }) => {
       <div className="card-text">
         <p>{description}</p>
         <a href={link} className="link">
-          Link
+          {link}
         </a>
       </div>
     </div>

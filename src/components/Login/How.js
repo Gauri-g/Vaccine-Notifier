@@ -4,9 +4,9 @@ import "./How.css";
 const How = () => {
   return (
     <>
-      <div className="how">
-        <h5 className="card-title">How does it work?</h5>
-        <div className="card-text">
+      <div className="login-how">
+        <h5 className="login-card-title">How does it work?</h5>
+        <div className="login-card-text">
           <ul>
             <li> Log in with your Google account</li>
             <li> Enter your age group and location</li>
