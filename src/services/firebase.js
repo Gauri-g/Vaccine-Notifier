@@ -51,7 +51,7 @@ export const signInWithGoogle = () => {
               )
               .then((response) => {
                 console.log(response);
-                window.location.href = "/dashboard";
+                window.location.href = "/home";
               })
               .catch((e) => {
                 console.log(e);
@@ -59,7 +59,7 @@ export const signInWithGoogle = () => {
               });
           } else {
             console.log("user existss");
-            window.location.href = "/dashboard";
+            window.location.href = "/home";
           }
         })
         .catch((error) => {

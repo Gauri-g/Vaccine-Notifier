@@ -94,7 +94,7 @@ export default function Dashboard() {
               age={age}
               setDistrict={setDistrict}
               setAge={setAge}
-              modalIsOpen={modalIsOpen}
+              modalIsOpen={modalIsOpenn}
               setIsOpen={setIsOpen}
               submitHandler={submitHandler}
               edit={edit}
