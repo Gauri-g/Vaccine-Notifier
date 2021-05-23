@@ -10,7 +10,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <nav className="navbar padding0 navbar-expand-md navbar-dark">
+    <nav className="navbar fixed padding0 navbar-expand-md navbar-dark">
       <a className="navbar-brand" href="/#">
         <img src={Logo} alt='vaccine' />
       </a>
@@ -26,12 +26,12 @@ const Navbar = () => {
 
       <div className="collapse navbar-collapse" id="collapsibleNavbar">
         <ul className="navbar-nav">
-          <li className="nav-item ">
+          <li className="nav-item">
             <a className="nav-link" href="/#">
               Home
             </a>
           </li>
-          <li className="nav-item ">
+          <li className="nav-item">
             <a className="nav-link" href="#otherresources">
               Other Resources
             </a>

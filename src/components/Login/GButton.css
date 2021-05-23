@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
 
 .login-provider-button {
@@ -12,8 +12,8 @@
   align-items: center;
   justify-content: center;
   width: 17.5rem;
-  height: 3rem; 
-  background: #3E64FF;
+  height: 3rem;
+  background: #3e64ff;
   border-radius: 8px;
   color: #eeeeee;
   border: transparent;
@@ -27,7 +27,6 @@
 }
 
 .bi-google {
-  /* padding: 0.5em; */
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -36,19 +35,7 @@
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
-  font-size: 1rem; 
-  letter-spacing: 0.15px; 
+  font-size: 1rem;
+  letter-spacing: 0.15px;
   margin-left: 0.5rem;
-}
-
-@media screen and (max-width: 786px) {
-  .login-buttons {
-    padding-top: 5%;
-  }
-}
-
-@media screen and (min-width: 786px) {
-  .login-buttons {
-    padding-top: 10%;
-}
 }

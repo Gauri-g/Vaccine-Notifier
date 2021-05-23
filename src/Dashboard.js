@@ -94,7 +94,7 @@ export default function Dashboard() {
               age={age}
               setDistrict={setDistrict}
               setAge={setAge}
-              modalIsOpen={modalIsOpenn}
+              modalIsOpen={modalIsOpen}
               setIsOpen={setIsOpen}
               submitHandler={submitHandler}
               edit={edit}
@@ -105,7 +105,11 @@ export default function Dashboard() {
             <How />
           </div>
           <div className="bug">
-            <a href="https://9txi4ju6lrd.typeform.com/to/a1928yCA" className="privacy white" id="bt-popup">
+            <a
+              href="https://9txi4ju6lrd.typeform.com/to/a1928yCA"
+              className="privacy white"
+              id="bt-popup"
+            >
               Report a bug
             </a>
           </div>
