@@ -166,7 +166,7 @@ const Form = ({
                 </div>
               </div>
             ) : (
-              <p>{age === 18 ? "18-45" : "45"}</p>
+              <p className="radiobtn-text">{age === 18 ? "18-45" : "45"}</p>
             )}
           </div>
           <div className="container-row-column">
@@ -179,7 +179,7 @@ const Form = ({
                 styles={colourStyles}
               />
             ) : (
-              <p>{district}</p>
+              <p className="radiobtn-text">{district}</p>
             )}
           </div>
         </div>
