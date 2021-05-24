@@ -81,11 +81,12 @@ export default function Dashboard() {
             </div>
         );
     }
+
     return (
         <>
-            <UserNavbar />
-            <div className="first-container">
-                <div className="bg2">
+            <div className="bg2 first-container">
+                <UserNavbar />
+                <div className="non-nav-container">
                     <p className="name">CoWIN Notifier</p>
                     <h5 className="maild">{mail}</h5>
                     <div className="form">

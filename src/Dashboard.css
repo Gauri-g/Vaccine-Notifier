@@ -15,11 +15,18 @@
   background-repeat: no-repeat;
   color: white;
   width: 100%;
-  padding: 20px;
   /* height: 100vh; */
 }
 
+.non-nav-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .name {
+  margin-top: 8vh;
   margin-bottom: 0;
   font-size: 32px;
   text-align: center;
@@ -94,6 +101,7 @@
 @media screen and (max-width: 786px) {
   .name {
     font-size: 18px;
+    margin-top: 1vh;
   }
   .maild {
     font-size: 16px;
