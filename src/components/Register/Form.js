@@ -69,7 +69,7 @@ const Form = ({
     control: (styles) => ({
       ...styles,
       overflow: "hidden",
-      color: "#8c8c8c",
+      color: "#3e64ff",
       border: "1px solid rgb(191, 191, 191)",
       boxSizing: "border-box",
       borderRadius: "5px",
@@ -81,16 +81,19 @@ const Form = ({
     }),
     indicatorSeparator: (styles) => ({
       ...styles,
+      color: "#3e64ff",
       height: "100%",
       margin: "0",
     }),
     input: (styles) => ({
       ...styles,
+      color: "#3e64ff",
       padding: "1",
       width: "140px",
     }),
     menu: (styles) => ({
       ...styles,
+      color: "#3e64ff",
       width: "15rem",
       marginTop: "0rem",
       marginLeft: "0rem",
