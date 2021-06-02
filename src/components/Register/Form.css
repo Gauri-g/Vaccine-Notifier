@@ -53,7 +53,7 @@
 .container-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 60%;
 }
@@ -79,6 +79,10 @@
   color: white;
 }
 
+.radiobtn-text {
+    text-align: center;
+}
+
 .padding {
   padding: 1rem;
 }
@@ -99,7 +103,7 @@
   padding: 0.75rem 1.5rem;
   align-content: center;
   font-family: Montserrat;
-  margin-top: 3rem;
+  margin-top: 36px;
   font-weight: 500;
 }
 
@@ -135,7 +139,6 @@
   }
 
   .save {
-    margin-top: 1rem;
     padding: 0.1rem 0.75rem;
     font-size: 16px;
   }
@@ -157,8 +160,13 @@
     display: flex;
     justify-content: center;
     letter-spacing: 1.5px;
+    font-size: 12px;
 	margin-top: 0;
   }
+
+    .save {
+        margin-top: 3px;
+    }
 
   .radio {
     display: inline-block;

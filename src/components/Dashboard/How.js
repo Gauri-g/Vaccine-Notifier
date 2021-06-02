@@ -6,7 +6,6 @@ const How = () => {
     <>
       {/* <div className="card" > */}
       <div className="hows">
-        <div>
           <h5 className="card-title">How does it work?</h5>
           <div className="card-text">
             <ul>
@@ -17,7 +16,6 @@ const How = () => {
               </li>
             </ul>
           </div>
-        </div>
       </div>
       {/* </div> */}
     </>

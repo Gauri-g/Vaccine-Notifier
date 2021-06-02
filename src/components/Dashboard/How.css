@@ -9,32 +9,36 @@
 .hows {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   font-family: Montserrat;
   background-color:#5274FF;
   border-radius: 16px;
   letter-spacing: 0.15px;
   font-weight: 400;
   padding: 1em;
-  width: 80vw;
-  margin: 24px;
+  width: 30vw;
+  margin: 12vh 10vh;
 }
 
 .card-text {
   margin-top: 1rem;
 }
+
 .card-title {
   justify-content: flex-start;
   font-weight: 500;
   font-size: 1.5rem;
   margin-top: 0.5rem;
+  text-align: center;
   letter-spacing: 0.15px;
 }
 
 
 @media screen and (max-width: 786px) {
   .hows {
-    margin-top: 10%;
+    margin: 3vh 3vh;
+    width: 87vw;
   }
   .card-title {
 	  font-size: 16px;
